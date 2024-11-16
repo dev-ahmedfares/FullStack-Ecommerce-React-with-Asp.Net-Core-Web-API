@@ -109,7 +109,7 @@ export default function AccountInfoForm() {
           <div className=" px-lg-4">
           <hr className="my-4 d-block" />
           </div>
-          <FieldToAddRole roles={roles} />
+          <FieldToAddRole  />
         </>
       )}
     </div>
