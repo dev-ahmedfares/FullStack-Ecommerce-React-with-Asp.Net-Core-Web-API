@@ -1,9 +1,3 @@
 {
-  "redirects": [
-    {
-      "source": "http://full-stack-ecommerce-react-with-asp-net-core-web-api.vercel.app/:path*",
-      "destination": "https://full-stack-ecommerce-react-with-asp-net-core-web-api.vercel.app/:path*",
-      "permanent": true
-    }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
