@@ -27,7 +27,7 @@ const actGetProductByPrefix = createAsyncThunk(
       if (filterQuery) {
          response = await axios.get<TResponse>(`/Product/Filtering?${filterQuery}&pageNumber=${pageNumber}&pageSize=${pageSize}`, { signal });
       } else {
-         response = await axios.get<TResponse>(`/Product?pageNumber=${pageNumber}&pageSize=${pageSize}/`, { signal });
+         response = await axios.get<TResponse>(`/Product?pageNumber=${pageNumber}&pageSize=${pageSize}`, { signal });
       }
 
       
