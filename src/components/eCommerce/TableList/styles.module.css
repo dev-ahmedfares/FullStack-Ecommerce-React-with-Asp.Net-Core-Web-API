@@ -1,0 +1,235 @@
+.productImg img {
+  width: 75px;
+  height: 80px;
+  background-color: #f2f2f2;
+  display: block;
+  object-fit: cover;
+}
+
+.tableParentSelection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Table */
+.tableParent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #d4d4d6;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.tableParent > div:first-child {
+  width: 100%;
+  overflow-y: hidden;
+}
+.tableParent table {
+  margin: 0;
+}
+.tableParent table tr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+}
+
+.tableParent table tr:not(:last-child) {
+  border-bottom: 1px solid #d4d4d6;
+}
+.tableParent table tr :where(td, th) {
+  flex: 1;
+  border: 0;
+  min-width: 130px;
+}
+
+.tableParent table :where(th:first-child, td:first-child) {
+  min-width: 91px !important;
+  flex: 0  1 !important;
+}
+
+.tableParent table :where(thead, th) {
+  color: var(--light-100);
+  background-color: var(--primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-size: 12px;
+}
+
+.tableParent table h2 {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+}
+
+@media (max-width: 768px) {
+  .tableParent table h2 {
+    font-size: 14px;
+    letter-spacing: 1;
+  }
+}
+.tableParent table h3 {
+  font-size: 12px;
+  color: var(--secondary);
+  font-family: "Montserrat", sans-serif;
+}
+
+.btn {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1.1px;
+}
+
+
+/* For Setting Icon */
+
+table :where(th:last-child, td:last-child) {
+  min-width: 150px !important;
+}
+
+table :where(th:last-child, td:last-child) > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Form  */
+.form {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--secondary-light);
+}
+
+@media (min-width: 992px) {
+  .form {
+    padding: 0 20px 10px;
+  }
+  .form > div:not(:nth-child(6)) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 !important;
+    column-gap: 10px;
+    position: relative;
+  }
+  .form > div:nth-child(6) > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin: 0 !important; */
+    column-gap: 10px;
+    position: relative;
+    margin: 25px 0;
+  }
+  .form > div:not(:last-child) {
+    padding: 35px 0;
+    border-bottom: 1px solid var(--secondary-light);
+  }
+  .form > div:last-child {
+    padding: 25px 0 5px;
+  }
+
+  .form > div label {
+    width: 100px;
+    font-weight: 500;
+    margin: 0;
+  }
+  .form > div :where(input, textarea) {
+    max-width: 400px;
+  }
+
+  .form > :where(div, div div)  div:first-of-type:not(:first-child) {
+    margin: 0;
+    width: 200px;
+    position: absolute;
+    bottom: 10px;
+    left: 29.5%;
+  }
+  
+  .form > div div  div:first-of-type:not(:first-child) {
+    bottom: -25px;
+  }
+}
+
+.select {
+  margin:  0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.select h2 {
+  width: 100px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+
+@media (min-width:992px) {
+  .select {
+    flex-direction: row;
+  }
+  
+  .select select {
+    max-width: 400px;
+  }
+  
+}
+
+
+/* pagination */
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 5px 0;
+  border-top: 1px solid var(--secondary-light);
+}
+.pagination ul {
+  margin: 0;
+}
+.pagination ul li {
+  display: flex;
+  align-items: center;
+}
+.pagination ul li a {
+  border: none;
+  color: var(--secondary);
+  font-size:12px;
+}
+.pagination ul li a:hover {
+  background-color: transparent;
+}
+.pagination ul li span {
+  font-size:16px;
+  color: var(--secondary) !important;
+  border: none;
+  display: block;
+  
+  background-color: transparent !important;
+}
+.pagination ul li :where(a:hover ,span:hover,a:focus ){
+  background-color: var(--primary) !important;
+
+}
+.pagination ul li :where(:hover,span:hover) span {
+  color: white !important;
+}
+
+.pagination ul li :where(a,span) span {
+  visibility: visible !important;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination ul li :where(a,span) span span {
+  display: block;
+  font-size: 14px;
+}

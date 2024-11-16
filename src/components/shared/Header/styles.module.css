@@ -1,0 +1,49 @@
+.headerContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 50;
+}
+
+.headerLogo {
+  z-index: 2;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 81px;
+  color: var(--primary);
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: 5px;
+}
+.headerLogo a {
+  text-decoration: none;
+}
+@media (max-width: 991px) {
+  .headerLogo {
+    margin: 0;
+  }
+}
+
+.navbar {
+  z-index: 1;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 20px 0;
+}
+
+/* Dropdown menu */
+
+.menu > div > a {
+  transition: all 0.2s ease;
+  color: var(--primary-light);
+  font-size: 14px;
+}
+.menu > div > a:hover {
+  background-color: transparent;
+  color: var(--secondary);
+}
+

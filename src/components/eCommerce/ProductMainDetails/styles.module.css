@@ -1,0 +1,10 @@
+.parent {
+    padding: 50px 0 90px;
+    background-color: var(--light-200);
+}
+.breadCrumbCss {
+    margin-bottom: 30px;
+}
+.breadCrumbCss ul {
+    margin-top: 0;
+}

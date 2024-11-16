@@ -1,0 +1,19 @@
+.select {
+    max-width: 200px;
+    font-size: 14px;
+    color: var(--secondary);
+    border-color: var(--secondary-light);
+    margin-left: auto;
+  }
+  .text {
+    margin: 0;
+    color: var(--primary-light);
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  @media (max-width:767px) {
+    .text {
+      display: none;
+    }
+  }

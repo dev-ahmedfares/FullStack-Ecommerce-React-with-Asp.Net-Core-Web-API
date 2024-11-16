@@ -1,0 +1,45 @@
+.banner {
+  height: 220px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: var(--light-200);
+}
+
+.banner img {
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  filter: grayscale(1);
+}
+
+.banner p {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 35px;
+  text-shadow: 0 1px 5px rgb(0, 0, 0, 0.5);
+  font-weight: 700;
+  color: white;
+
+  margin: 0;
+  overflow: hidden;
+  text-transform: uppercase !important;
+}
+
+.banner > div {
+  backdrop-filter: blur(2px);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+

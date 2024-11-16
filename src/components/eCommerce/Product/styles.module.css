@@ -1,0 +1,158 @@
+.maximumNotice {
+  font-size: 12px;
+  margin: 5px;
+  font-weight: 500;
+  color: var(--gray-300);
+}
+
+
+
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.product h2 {
+  font-size: 17px;
+  margin-top: 9px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product h3 {
+  font-size: 14px;
+  color: var(--secondary);
+  font-family: Montserrat,sans-serif;
+}
+
+.productImg {
+  height: 350px;
+  background-color: #f2f2f2;
+}
+.productImg img {
+  height: 100%;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.productInfo {
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 5px;
+  position: relative;
+}
+
+/* Wishlist */
+
+.wishlistBtn {
+  position: absolute;
+  width: 138px;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0;
+  padding: 5px ;
+  opacity: 0;
+  visibility:hidden ;
+  transition: all 0.3s ease;
+}
+
+.wishlistBtn:hover {
+  box-shadow: 0px 0px 5px -3px rgba(0, 0, 0, 0.4);
+}
+.wishlistBtn > div:first-child {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 1.3px;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.wishlistBtn > div:last-child {
+  padding: 0 10px;
+}
+
+.product:hover .wishlistBtn {
+  top: -45px;
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.productInfo > div:last-child button {
+  color: var(--primary);
+  border: none;
+}
+
+.productInfo > div:last-child button:hover,
+.productInfo > div:last-child button:active,
+.productInfo h3:hover {
+  color: var(--secondary) !important;
+}
+
+.productInfo > div:last-child {
+  position: relative;
+  height: 33px;
+}
+.productInfo > div:last-child button {
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  font-size: 14px;
+}
+
+.productInfo > div:last-child h3,
+.productInfo > div:last-child button {
+  width: 100%;
+  height: 33px;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.productInfo > div:last-child h3 {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.product .productInfo > div:last-child :where(button, button:disabled, button.disabled) {
+  transform: translateX(100%);
+}
+
+.product:hover .productInfo > div:last-child button,
+.product:hover .productInfo > div:last-child button:disabled,
+.product:hover .productInfo > div:last-child button.disabled {
+  transform: translateX(0%);
+  opacity: 1;
+  visibility: visible;
+}
+.product:hover .productInfo > div:last-child button:disabled,
+.product:hover .productInfo > div:last-child button.disabled {
+  text-decoration: line-through;
+  color: var(--secondary);
+}
+.product:hover .productInfo > div:last-child h3 {
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateX(-100%);
+}

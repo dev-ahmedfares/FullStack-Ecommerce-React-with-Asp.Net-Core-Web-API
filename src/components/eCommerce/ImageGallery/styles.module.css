@@ -1,0 +1,52 @@
+.imageGallery  {
+    display: flex;
+    gap: 13px;
+}
+
+.imageGallery ul {
+    list-style: none;
+    padding: 0;
+    width: 90px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+   
+}
+@media (max-width:991px) {
+    .imageGallery {
+        flex-direction: column-reverse;
+    }
+    .imageGallery ul {
+        flex-direction: row;
+        width: 100%;
+
+    }
+}
+.imageGallery li {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: white;
+    height: 113.5px;
+   
+}
+.imageGallery li:hover,
+ .activeImgStyle {
+padding: 2px;
+box-shadow: 0 0 1px 0px rgb(0, 0, 0,.5);
+}
+.imageGallery > div img {
+    max-height: 550px;
+}
+.imageGallery  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    
+}
+
+.imageGallery > div {
+    flex: 1;
+    height: 500px;
+}

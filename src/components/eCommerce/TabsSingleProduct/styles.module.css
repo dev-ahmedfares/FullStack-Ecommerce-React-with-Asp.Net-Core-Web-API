@@ -1,0 +1,120 @@
+.tabsParent {
+  border: 1px solid var(--secondary-light);
+  padding-bottom: 40px;
+  border-right: 0;
+  border-left: 0;
+}
+
+.tabsParent ul:first-of-type {
+  border: none;
+  transform: translateY(-39px);
+}
+.tabsParent ul:first-of-type li {
+  border: none !important;
+}
+.tabsParent ul:first-of-type li button {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+}
+
+.tabsParent ul:first-of-type li button:focus,
+.tabsParent ul:first-of-type li button:hover,
+.tabsParent ul:first-of-type li button.active {
+  border-color: var(--secondary-light) !important;
+  border-bottom-color: transparent !important;
+}
+.tabsParent form > div:first-child {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+.tabsParent textarea {
+  font-size: 14px;
+  min-height: 100px;
+}
+
+/* Tab */
+.tab:first-child > div {
+  display: flex;
+}
+
+.tab:first-child span:first-child {
+  font-weight: 500;
+  color: var(--secondary);
+  margin: 0 30px 0 20px;
+  width: 100px;
+  display: block;
+}
+.tab:first-child span:last-child {
+  display: block;
+  color: var(--gray-100);
+}
+
+.tab:last-child h4 {
+  text-transform: uppercase;
+  font-size: 20px;
+}
+.tab:last-child ul {
+  padding: 0;
+  list-style: none;
+  margin: 60px 0 -20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 200px;
+  
+}
+.tab:last-child ul li > div {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.tab:last-child ul li > div p:first-of-type {
+  margin: 7px 0 0;
+  color: var(--secondary);
+}
+.tab:last-child ul li > div p:first-of-type span:first-child {
+  font-weight: 600;
+}
+
+.tab:last-child ul li > div p:last-of-type {
+  color: var(--secondary);
+}
+.tab:last-child ul img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+
+.tab:last-child button {
+  border-radius: 0;
+}
+
+/* imageUser */
+.imageUser {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--secondary-light);
+}
+.btnClose {
+  display: flex;
+  margin-left: auto;
+  padding-right:20px ;
+
+}
+.btnClose button {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  display: block;
+  background-size: cover;
+  
+}

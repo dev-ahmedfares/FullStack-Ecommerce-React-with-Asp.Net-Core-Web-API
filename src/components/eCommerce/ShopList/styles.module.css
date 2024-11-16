@@ -1,0 +1,220 @@
+.parent {
+  display: flex;
+  gap: 20px;
+}
+
+.parent > div:first-child {
+  flex: 1;
+  min-height: 90vh;
+  max-width: 250px;
+}
+.canvasContainer {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .parent > div:first-child {
+    display: none;
+  }
+  .canvasContainer {
+    display: block;
+    max-width: 270px;
+  }
+  .sidebarCanvas > div:first-child div > h2 ~ div {
+    max-height: 220px;
+    overflow-y: auto;
+    margin-right: 3px;
+  }
+}
+.canvasContainer > div {
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.parent > div:last-child {
+  flex: 3;
+}
+
+:where(.sidebar, .sidebarCanvas) div {
+  border: none !important;
+}
+
+@media (min-width:992px) {
+  .sidebar {
+    margin-left: -10px !important; 
+  }
+}
+.sidebarCanvas > div:first-child div h2 button {
+  padding-right: 0 !important;
+}
+:where(.sidebar, .sidebarCanvas) h2 button,
+:where(.sidebar, .sidebarCanvas) > div:last-child label {
+  background-color: transparent !important;
+  color: var(--primary-light) !important;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  font-size: 14px !important;
+  box-shadow: none !important;
+  padding-bottom: 0 !important;
+}
+
+.parent .sidebar h2 button:after,
+.sidebarCanvas h2 button:after {
+  background-size: cover;
+  width: 10px;
+  height: 10px;
+}
+
+.parent .sidebar ul,
+.sidebarCanvas ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+
+.parent .sidebar ul button,
+.sidebarCanvas ul button {
+  background-color: transparent;
+  border: none;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray-200);
+}
+.parent .sidebar ul button:hover,
+.parent .sidebar ul button:active,
+.parent .sidebar ul button:focus,
+.sidebarCanvas ul button:hover,
+.sidebarCanvas ul button:active,
+.sidebarCanvas ul button:focus {
+  color: var(--primary-light);
+}
+.activeBtn {
+  color: var(--primary-light) !important;
+}
+.parent .sidebar > div:last-child,
+.sidebarCanvas > div:last-child {
+  margin-top: 40px;
+  padding: 0 20px ;
+}
+
+
+.parent .sidebar > div:last-child label,
+.sidebarCanvas > div:last-child label {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.parent .sidebar > div:last-child div,
+.sidebarCanvas > div:last-child div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+}
+.parent .sidebar > div:last-child > div button,
+.sidebarCanvas > div:last-child > div button {
+  color: var(--primary-light);
+  font-weight: 500;
+  border: none;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding: 0;
+}
+
+/* category Body */
+.categoryBody > div:first-child > div p {
+  margin: 0;
+  color: var(--secondary);
+  font-size: 14px;
+}
+.categoryBody > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.categoryBody > div:first-child > select {
+  max-width: 200px;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
+  color: var(--secondary);
+
+  border-color: var(--secondary-light);
+}
+/* pagination */
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px 0 ;
+}
+.pagination ul {
+  margin: 0;
+  display: flex;
+  flex:1
+}
+.pagination ul > div {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 10px;
+  color: var(--secondary);
+  justify-content: space-between;
+  flex: 1;
+}
+.pagination ul > div span {
+  padding: 0;
+}
+.pagination ul li {
+  display: flex;
+  align-items: center;
+}
+.pagination ul li a {
+  border: none !important;
+  color: var(--secondary);
+  font-size:12px;
+  border-radius: 0px !important;
+}
+.pagination ul li a:hover {
+  background-color: transparent;
+}
+.pagination ul li span {
+  font-size:16px;
+  color: var(--secondary) !important;
+  border: none;
+  display: block;
+  
+  background-color: transparent !important;
+}
+.pagination ul li :where(a:hover ,span:hover,a:focus ){
+  background-color: var(--primary) !important;
+}
+.pagination ul li :where(:hover,span:hover) span {
+  color: white !important;
+}
+
+.pagination ul li :where(a,span) span {
+  visibility: visible !important;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.pagination ul li :where(a,span) span span {
+  display: block;
+  font-size: 14px;
+ 
+}

@@ -1,0 +1,33 @@
+.card {
+    height: 220px;
+    position: relative;
+    border: 1px solid var(--secondary-light);
+    border-radius: 6px;
+    overflow: hidden;
+}
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card p {
+    background-image: linear-gradient(360deg,rgba(0, 0, 0, 0.411) 5%,transparent);
+    position: absolute;
+    inset: 0;
+    text-align: center;
+    margin: 0;
+    
+}
+.card p span {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    font-family: Montserrat,sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}

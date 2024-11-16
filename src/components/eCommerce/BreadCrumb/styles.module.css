@@ -1,0 +1,32 @@
+ .breadCrumb ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin-top: 120px;
+    gap: 20px;
+    padding: 0;
+    color: var(--secondary);
+  }
+   .breadCrumb ul li {
+    position: relative;
+  }
+   .breadCrumb ul li:not(:last-child):after {
+    content: "/";
+    position: absolute;
+    top: 1px;
+    margin: 0 5px 0 6.5px;
+  }
+   .breadCrumb ul a,
+   .breadCrumb ul span  {
+    text-decoration: none;
+    color: var(--secondary);
+    text-transform: uppercase;
+    font-size: 12px;
+    transition: all 0.2s ease;
+  }
+  
+  
+   .breadCrumb ul a:hover,
+   .breadCrumb ul a:focus {
+    color: var(--primary);
+  }

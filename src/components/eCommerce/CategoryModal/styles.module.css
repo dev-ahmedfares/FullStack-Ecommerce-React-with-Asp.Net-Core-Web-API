@@ -1,0 +1,124 @@
+/* Form  */
+.form {
+    
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--secondary-light);
+  }
+  
+  @media (min-width: 992px) {
+    .form {
+      padding: 0 20px 10px;
+    }
+    .form > div:not(:nth-child(6)) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 !important;
+      column-gap: 10px;
+      position: relative;
+    }
+    .form > div:nth-child(6) > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* margin: 0 !important; */
+      column-gap: 10px;
+      position: relative;
+      margin: 25px 0;
+    }
+    .form > div:not(:last-child) {
+      padding: 35px 0;
+      border-bottom: 1px solid var(--secondary-light);
+    }
+    .form > div:last-child {
+      padding: 25px 0 5px;
+    }
+  
+    .form > div label {
+      width: 100px;
+      font-weight: 500;
+      margin: 0;
+    }
+    .form > div :where(input, textarea) {
+      max-width: 400px;
+    }
+  
+    .form > :where(div, div div)  div:first-of-type:not(:first-child) {
+      margin: 0;
+      width: 200px;
+      position: absolute;
+      bottom: 10px;
+      left: 29.5%;
+    }
+    
+    .form > div div  div:first-of-type:not(:first-child) {
+      bottom: -25px;
+    }
+  }
+
+  /* Category Container */
+  .categoryContainer {
+    display: block !important;
+  }
+  .categoryContainer > section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 5px 0 0;
+    margin-bottom: 10px ;
+    max-height: 220px;
+    overflow-y: auto;
+
+    border-bottom: 1px solid var(--secondary-light);
+  }
+  .categoryContainer > section > section {
+    width: 100%;
+  }
+  .categoryContainer section section > span {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding:5px 0 0 10px;
+    /* justify-content: space-between; */
+  }
+  .categoryContainer > h2 {
+    font-size: 23px;
+    text-align: center;
+   
+  }
+  .form > h2 {
+    font-size: 23px;
+    text-align: center;
+    padding: 10px 0;
+    
+  }
+  @media (min-width:992px) {
+    .form > h2 {
+      padding-top: 20px;
+      
+    }
+    .categoryContainer > section {
+      border: none;
+    }
+  }
+ 
+  .categoryContainer section section h2 {
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .categoryContainer section section h2 span button {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    display: block;
+    background-size: cover;
+  }
+  .categoryContainer h5 {
+    font-size: 16px;
+    margin: 0;
+    color: var(--secondary);
+  }

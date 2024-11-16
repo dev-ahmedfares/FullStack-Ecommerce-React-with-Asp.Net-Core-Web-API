@@ -1,0 +1,221 @@
+@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --primary: #080808;
+  --primary-light:#212121;
+  --secondary: #929292;
+  --secondary-light:#92929241;
+  --gray-100: #a5a5a5;
+  --gray-200: #999;
+  --gray-300: #b5b5b5;
+  --light-100: #f3f3f3;
+  --light-200:#fafafa
+}
+
+#root {
+  height: 100vh;
+}
+
+/* Customize Scrollbar */
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--gray-300);
+}
+
+*::-webkit-scrollbar-thumb {
+  background:var(--primary);
+  border-radius: 50px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-light);
+}
+
+body {
+  color: var(--primary);
+  font-family: "Catamaran", sans-serif;
+}
+/* Reset */
+h1,h2,h3,h4 {
+  margin: 0;
+}
+::selection {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+/* Navbar  */
+.navbar-nav .nav-link {
+  color: var(--primary);
+  letter-spacing: 1.2px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show,
+.nav-link:focus,
+.nav-link:hover {
+  color: var(--secondary);
+}
+
+.nav-link.active svg,
+.nav-link:hover svg {
+  filter: invert(69%) sepia(0%) saturate(2434%) hue-rotate(148deg)
+    brightness(83%) contrast(104%);
+}
+
+
+
+header svg:hover {
+  filter: invert(69%) sepia(0%) saturate(2434%) hue-rotate(148deg)
+    brightness(83%) contrast(104%);
+}
+
+/* Canvas */
+
+.canvas .nav-link {
+  justify-content: flex-start;
+  font-size: 18px;
+  color: var(--gray-100);
+}
+
+.canvas .nav-link:hover,
+.canvas .nav-link.active {
+  transform: translateX(5px);
+  transition: all 0.2s ease-in-out;
+  color: white;
+}
+
+/* dropdown */
+.dropdown-item:hover,
+.dropdown-item:focus {
+  color: var(--primary);
+  background-color: var(--light-100);
+}
+
+/* Slider */
+.carousel {
+  position: relative;
+}
+.carousel-control-prev,
+.carousel-control-next {
+  display: none;
+}
+.carousel-item {
+  height: 460px;
+}
+
+@media (min-width: 992px) {
+  .carousel-item {
+    height: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+   .carousel-item:first-child img {
+    width: 250px !important;
+    height: 270px !important;
+    left: 50%;
+    transform: translateX(-50%);
+    object-fit: cover;
+  }
+  .carousel-item:nth-child(2) img {
+    width: 160px !important;
+    height: 230px !important;
+    object-fit: cover;
+    left: 50%;
+    top: 10px;
+    bottom: initial;
+    right: initial;
+    transform: translateX(-50%);
+  }
+  .carousel-item:last-child img:first-child {
+    width: 180px !important;
+    height: 350px !important;
+    object-fit: cover;
+    left: 25%;
+    top:-90px !important;
+    right: initial;
+  } 
+  .carousel-item:last-child img:last-child {
+    width: 160px !important;
+    height: 283px !important;
+    object-fit: cover;
+    left: 55%;
+    top: -85px !important;
+    right: initial;
+  }
+}
+
+.carousel-caption {
+  left: 10%;
+  text-align: start;
+  bottom: 10%;
+}
+
+.carousel-caption h3 {
+  letter-spacing: 1.3px;
+  font-size: 35px;
+}
+@media (max-width:640px) {
+  .carousel-caption h3 {
+    font-size: 25px;
+  }
+}
+.carousel-caption p {
+  width: 300px;
+  font-size: 14px;
+  color: var(--gray-100);
+}
+
+@media (min-width: 1080px) {
+  .carousel-indicators {
+    top: 0;
+    left: -24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+    margin: 0;
+  }
+  .carousel-indicators [data-bs-target] {
+    z-index: -1;
+    width: 22px;
+    height: 2px;
+    transition: width 0.2s ease;
+    counter-increment: count;
+  }
+
+  .carousel-indicators [data-bs-target]::before {
+    position: absolute;
+    transform: translate(490px, -12px);
+    left: 0;
+    content: "0" counter(count);
+    width: fit-content;
+  }
+
+  .carousel-indicators [data-bs-target].active {
+    width: 90px;
+  }
+}
+
+/* Button */
+
+.btn-primary:hover {
+  background-color: var(--primary-light);
+  border-color: var(--primary-light);
+}
+.btn-secondary:hover {
+  background-color: var(--gray-300);
+  border-color: var(--gray-300);
+  color: white;
+}

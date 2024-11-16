@@ -1,0 +1,145 @@
+.btn {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--primary);
+  letter-spacing: 1.2px;
+  font-size: 14px;
+}
+.btnActive {
+  color: var(--secondary) !important;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active {
+    color: var(--secondary) !important;
+}
+
+.dropdown > button {
+  letter-spacing: 1.4px;
+  font-size: 14px;
+}
+.dropdown > div {
+  background-color: var(--primary-light);
+  padding: 20px 15px;
+}
+
+.menu {
+  display: flex;
+
+  font-size: 14px;
+}
+
+.menu > div {
+  font-family: "Montserrat", sans-serif;
+  min-width: 150px;
+  font-size: 13px;
+}
+.menu > div button {
+  color: var(--secondary);
+  transition: all 0.2s ease;
+}
+
+.menu > div button:hover {
+  background-color: transparent;
+  color: white;
+}
+.menu > div > span {
+  font-weight: 400;
+  color: white;
+}
+
+.FilterActive {
+    color: white !important;
+  }
+  
+/* Hide and show category options */
+
+.categoryStyle {
+  display: none;
+}
+.categoryList {
+  display: flex;
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+
+@media (max-width: 992px) {
+  .categoryStyle {
+    display: block;
+  }
+  .categoryList {
+    display: none;
+  }
+}
+
+/* pagination */
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px 0 20px;
+  border-bottom: 1px solid var(--secondary-light);
+}
+.pagination ul {
+  margin: 0;
+  display: flex;
+  flex:1
+}
+.pagination ul > div {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 10px;
+  color: var(--secondary);
+  justify-content: space-between;
+  flex: 1;
+}
+.pagination ul > div span {
+  padding: 0;
+}
+.pagination ul li {
+  display: flex;
+  align-items: center;
+}
+.pagination ul li a {
+  border: none !important;
+  color: var(--secondary);
+  font-size:12px;
+  border-radius: 0px !important;
+}
+.pagination ul li a:hover {
+  background-color: transparent;
+}
+.pagination ul li span {
+  font-size:16px;
+  color: var(--secondary) !important;
+  border: none;
+  display: block;
+  
+  background-color: transparent !important;
+}
+.pagination ul li :where(a:hover ,span:hover,a:focus ){
+  background-color: var(--primary) !important;
+}
+.pagination ul li :where(:hover,span:hover) span {
+  color: white !important;
+}
+
+.pagination ul li :where(a,span) span {
+  visibility: visible !important;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.pagination ul li :where(a,span) span span {
+  display: block;
+  font-size: 14px;
+ 
+}

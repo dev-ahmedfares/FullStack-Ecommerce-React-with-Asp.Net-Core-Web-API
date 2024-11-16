@@ -1,0 +1,40 @@
+.parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  flex-direction: column;
+  text-align: center;
+  padding: 50px 0 20px;
+}
+@media (max-width:768px) {
+    .parent {
+        padding: 20px 0;
+    }
+}
+.parent > div {
+  position: relative;
+  transform: translateY(-20%);
+
+}
+.text {
+  position: absolute;
+  top: 63%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.textEmpty {
+  bottom: 10px;
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.moveDown {
+    bottom: -10px;
+}
+

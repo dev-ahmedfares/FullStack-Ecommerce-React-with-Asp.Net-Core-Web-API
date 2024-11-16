@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+
+  }
+  
+  .container span {
+    display: block;
+    font-size: 17px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .container span:last-child {
+    
+    font-family: Montserrat,sans-serif;
+  }
+
+  .confirmText {
+    font-family: Montserrat,sans-serif;
+  }

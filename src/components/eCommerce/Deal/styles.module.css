@@ -1,0 +1,32 @@
+.dealContainer {
+    position: relative;
+    height: 220px;
+    border: 1px solid var(--secondary-light);
+    flex: 1;
+}
+
+.dealContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right;
+    display: block;
+}
+.dealContainer > div {
+    position: absolute;
+    inset: 0;
+    padding: 30px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-image: linear-gradient(120deg,rgba(255, 255, 255, 0.904) 30%,transparent );
+}
+.dealContainer > div h2 {
+    font-weight: 600;
+}
+.dealContainer > div span {
+    letter-spacing: 1.2px;
+}
+.dealContainer > div button {
+    margin-top: 12px;
+}

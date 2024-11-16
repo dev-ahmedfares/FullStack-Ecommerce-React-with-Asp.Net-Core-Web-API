@@ -1,0 +1,47 @@
+.parent {
+    border-radius: 6px;
+    border: 1px solid var(--secondary-light);
+    padding: 20px;
+  }
+  /* Form  */
+  
+    
+    @media (min-width: 992px) {
+      .form {
+        padding: 20px 20px 10px;
+      }
+      .form > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 !important;
+        column-gap: 10px;
+        position: relative;
+      }
+      .form > div:not(:last-child) {
+        padding: 30px 0 0;
+        
+      }
+      .form > div:last-child {
+        padding: 25px 0 5px;
+      }
+    
+      .form > div label {
+        width: 100px;
+        font-weight: 500;
+        margin: 0;
+      }
+      .form > div :where(input, textarea) {
+        max-width: 400px;
+      }
+      .form > div input::placeholder {
+        font-size: 14px;
+      }
+      .form > div > div:first-of-type {
+        margin: 0;
+        position: absolute;
+        bottom: -35%;
+        left: 26.2%;
+      }
+    }
+    
