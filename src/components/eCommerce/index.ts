@@ -1,5 +1,4 @@
-import  AccountInfoForm  from './AccountInfoForm/AccountInfoForm';
-import Category from "./Category/Category";
+import AccountInfoForm from "./AccountInfoForm/AccountInfoForm";
 import Product from "./Product/Product";
 import CartItemsList from "./CartItemsList/CartItemsList";
 import CartItem from "./CartItem/CartItem";
@@ -15,13 +14,12 @@ import FieldToAddRole from "./FieldToAddRole/FieldToAddRole";
 import CategoryModal from "./CategoryModal/CategoryModal";
 import WishlistItem from "./WishlistItem/WishlistItem";
 import WishlistItemsList from "./WishlistItemsList/WishlistItemsList";
-
+import Breadcrumb from "./BreadCrumb/BreadCrumbLinks";
 
 export {
   TableList,
   Product,
   FieldToAddRole,
-  Category,
   CartItemsList,
   CartItem,
   CartSubtotalPrice,
@@ -34,5 +32,6 @@ export {
   AccountInfoForm,
   CategoryModal,
   WishlistItemsList,
-  WishlistItem
+  WishlistItem,
+  Breadcrumb,
 };

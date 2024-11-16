@@ -1,12 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import {
-  FLUSH,
-  PAUSE,
-  PERSIST,
+  // FLUSH,
+  // PAUSE,
+  // PERSIST,
   persistReducer,
-  PURGE,
-  REGISTER,
-  REHYDRATE,
+  // PURGE,
+  // REGISTER,
+  // REHYDRATE,
 } from "redux-persist";
 import categories from "./Category/categorySlice";
 import products from "./Product/productSlice";
@@ -54,8 +54,7 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       
-      // serializableCheck: {
-        
+      // serializableCheck: {  
       //   ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       // },
       serializableCheck: false

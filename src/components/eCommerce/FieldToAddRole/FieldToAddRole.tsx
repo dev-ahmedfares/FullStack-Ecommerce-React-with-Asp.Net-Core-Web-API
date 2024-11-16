@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { actGiveUserRole } from "@store/auth/authSlice";
 
 const { form } = styles;
-export default function FieldToAddRole({ roles }: { roles: string[] }) {
+export default function FieldToAddRole() {
   const dispatch = useAppDispatch();
   const { errorRole, loadingRole } = useAppSelector((state) => state.auth);
   const {

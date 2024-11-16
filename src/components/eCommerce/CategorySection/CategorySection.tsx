@@ -28,8 +28,9 @@ export default function CategorySection() {
   const {
     allProducts,
     categories,
-    loadingCategories,
-    errorCategories,
+    // staticElement
+    // loadingCategories,
+    // errorCategories,
     errorProduct,
     loadingProduct,
     isTheLastPage,

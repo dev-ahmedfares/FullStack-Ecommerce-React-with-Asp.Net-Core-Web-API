@@ -32,7 +32,7 @@ export default function CategoryModal({
   setShowCategoryModal,
   categories,
 // staticElement
-  error,
+  // error,
   loading,
   setRefreshCategory
 }: TCategoryProps) {

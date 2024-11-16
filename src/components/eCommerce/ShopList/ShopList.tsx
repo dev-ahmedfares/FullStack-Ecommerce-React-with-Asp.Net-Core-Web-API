@@ -14,7 +14,7 @@ import List from "@assets/svg/lnr-list.svg?react";
 import Loading from "@components/feedback/Loading";
 import useProductsWithFiltering from "@hooks/useProductsWithFiltering";
 import { ArrayOfColors, ArrayOfMaterials } from "@data/data";
-import Banner from "../Banner/Banner";
+
 
 const {
   parent,
@@ -42,8 +42,9 @@ export default function ShopList() {
   const {
     allProducts,
     categories,
-    loadingCategories,
-    errorCategories,
+    // staticElement
+    // loadingCategories,
+    // errorCategories,
     errorProduct,
     loadingProduct,
     isTheLastPage,

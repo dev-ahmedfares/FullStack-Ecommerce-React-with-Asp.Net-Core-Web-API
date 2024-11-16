@@ -3,7 +3,6 @@ import {
   ProductMainDetails,
   Product,
 } from "@components/eCommerce";
-import Breadcrumb from "@components/eCommerce/BreadCrumb/Breadcrumb";
 import Loading from "@components/feedback/Loading";
 
 import GridList from "@components/shared/GridList/GridList";
@@ -34,7 +33,7 @@ export default function SingleProduct() {
   const {
     accessToken,
     // staticElement
-    loading: userLoading,
+    // loading: userLoading,
     user,
   } = useAppSelector((state) => state.auth);
 
@@ -43,13 +42,11 @@ export default function SingleProduct() {
       actGetSingleProduct({ productId, withRelated: true })
     );
 
-    promise.then((value)=>{
-      if (value.meta.requestStatus === "rejected") return
+    promise.then((value) => {
+      if (value.meta.requestStatus === "rejected") return;
       dispatch(actGetReviewByProductId(productId));
-    })
-   
-    
- 
+    });
+
     return () => {
       promise.abort();
       dispatch(singleProductCleanUp());
@@ -63,8 +60,10 @@ export default function SingleProduct() {
     loading: productsLoading,
     error,
   } = useAppSelector((state) => state.products);
-  
-  const relatedProduct = records.filter((product)=> product.productId !== singleProduct?.productId)
+
+  const relatedProduct = records.filter(
+    (product) => product.productId !== singleProduct?.productId
+  );
   const productsFullInfo = relatedProduct.map((el) => ({
     ...el,
     quantity: cartItems[el.productId] || 0,
@@ -77,13 +76,11 @@ export default function SingleProduct() {
     reviews,
   } = useAppSelector((state) => state.review);
 
-
-
   const allReviewsCount =
     reviews.length > 0 ? reviews.reduce((acc, el) => acc + el.rating, 0) : 0;
   const averageRating =
     Math.round((allReviewsCount / (reviews.length * 5)) * 5) || 0;
- 
+
   return (
     <Loading status={productsLoading} error={error} type="table">
       <>

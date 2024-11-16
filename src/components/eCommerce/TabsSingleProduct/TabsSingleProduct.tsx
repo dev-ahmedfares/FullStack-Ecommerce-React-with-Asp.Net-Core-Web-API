@@ -37,7 +37,8 @@ export default function TabsSingleProduct({
   productId,
   userName,
   loadingReview,
-  errorReview,
+  // staticElement
+  // errorReview,
   setRefreshReview,
   refreshReview,
   reviews

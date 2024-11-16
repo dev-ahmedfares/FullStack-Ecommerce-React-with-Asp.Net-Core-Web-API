@@ -19,7 +19,8 @@ export default function AccountInfoForm() {
     register,
     formState: { errors },
     handleSubmit,
-    reset,
+    // staticElement
+    // reset,
   } = useForm<TChangePasswordForm>({
     resolver: zodResolver(changePasswordSchema),
   });

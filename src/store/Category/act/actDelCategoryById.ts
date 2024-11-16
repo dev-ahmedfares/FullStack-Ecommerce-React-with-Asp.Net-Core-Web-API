@@ -7,7 +7,7 @@ const actDelCategoryById = createAsyncThunk("categories/actDelCategoryById",asyn
     const {rejectWithValue,getState} =thunkAPI
     const {auth} = getState() as RootState
     try {
-        const response = await axios.delete(`/Category/${id}`,{
+         await axios.delete(`/Category/${id}`,{
             headers: {
                 Authorization: `Bearer ${auth.accessToken}`
               },

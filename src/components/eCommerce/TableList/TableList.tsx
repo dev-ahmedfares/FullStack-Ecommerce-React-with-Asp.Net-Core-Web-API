@@ -8,7 +8,7 @@ import {
 } from "react-bootstrap";
 import styles from "./styles.module.css";
 import { useCallback, useEffect, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Path, SubmitHandler, useForm } from "react-hook-form";
 import {
   addProductSchema,
   type TAddProductForm,
@@ -54,7 +54,7 @@ export default function TableList() {
   const {
     loading: loadingForProduct,
     // staticElement
-    error: productError,
+    // error: productError,
     productsFullInfo,
     isTheLastPage,
   } = useGetProducts({
@@ -447,7 +447,7 @@ export default function TableList() {
                 .fill(0)
                 .map((_, idx) => {
                   const count = ++idx + 1;
-                  const name = `Image_${count}`;
+                  const name = `Image_${count}` as Path<TAddProductForm> ;
                   return (
                     <Input
                       key={count}

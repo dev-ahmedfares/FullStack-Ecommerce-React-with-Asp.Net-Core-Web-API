@@ -1,12 +1,8 @@
-import { TProduct } from "@customTypes/index";
+
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axiosErrorHandler from "@utils/axiosErrorHandler";
 import axios from "axios";
 
-type TResponse = {
-  isTheLastPage: boolean;
-  productsDTOx: TProduct[];
-};
 
 const actGetSingleProduct = createAsyncThunk(
   "products/actGetSingleProduct",

@@ -1,12 +1,13 @@
+
 import { Form } from "react-bootstrap";
 import { FieldValues, Path, UseFormRegister } from "react-hook-form";
 
-type TInputProps<TFormInputs extends FieldValues> = {
+type TInputProps<T extends FieldValues> = {
   label: string;
   type?: string;
-  name:string;
+  name:Path<T>;
   error?: string;
-  register: UseFormRegister<TFormInputs>;
+  register: UseFormRegister<T>;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   formText?: string;
   success?: string;
@@ -16,7 +17,7 @@ type TInputProps<TFormInputs extends FieldValues> = {
   placeholder?:string
 };
 
-export default function Input<TFormInputs extends FieldValues>({
+export default function Input<T extends FieldValues>({
   label,
   register,
   type = "text",
@@ -29,13 +30,13 @@ export default function Input<TFormInputs extends FieldValues>({
   placeholder,
   as = "input",
   defaultValue
-}: TInputProps<TFormInputs>) {
+}: TInputProps<T>) {
   const onblurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
     if (onBlur) {
       onBlur(e);
-      register(name as Path<TFormInputs>).onBlur(e);
+      register(name as Path<T>).onBlur(e);
     } else {
-      register(name as Path<TFormInputs>).onBlur(e);
+      register(name as Path<T>).onBlur(e);
     }
   };
 

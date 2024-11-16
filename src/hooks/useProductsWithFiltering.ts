@@ -11,7 +11,7 @@ const useProductsWithFiltering = (pageCount: number = 8) => {
   const [filterMaterial, setFilterMaterial] = useState<string | null>(null);
   const [sortPrice, setSortPrice] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(pageCount);
+  const [pageSize] = useState(pageCount);
 
   // Important notice about filtering in this page this behavior must work together filter category & price but there's an problem with api endpoint that take only one query filter price or category very soon will discuss with backend about this problem to fix it .
   const handleCategoryParams = (categoryId: number) => {
