@@ -23,5 +23,11 @@
         }
       ]
     }
+  ],"redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://full-stack-ecommerce-react-with-asp-net-core-web-api.vercel.app",
+      "permanent": true
+    }
   ]
 }
