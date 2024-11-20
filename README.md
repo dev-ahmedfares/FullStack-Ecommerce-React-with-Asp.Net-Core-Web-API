@@ -2,7 +2,7 @@
 <!-- <a href="https://snapgram-official.vercel.app/"><img  src="/public/assets/images/logo.svg" width="120" height="auto"/></a>
 <h2></h2> -->
 <h3>An e-commerce web application</h3>
-<h4>that provides a seamless shopping experience for users. This project includes various features such as product browsing, filtering, wishlist, cart management, reviews, order tracking, and admin functionalities.
+<h4>that provides a seamless shopping experience for users. This project includes various features such as product browsing, filtering, wishlist, cart management, reviews, orders, and admin functionalities.
 </h4>
 </div>
 <h2></h2>
@@ -59,6 +59,9 @@
 9. **Profile Page**:
    - A user profile page showcasing user information and providing options to edit the profile like update password.
 
+9. **Skeleton And Animation**:
+   - Implementation app skeleton in the case data is loading or fetching from api and some file animation for different state like there's a error or the page is empty or order is success and more ...
+
 ---
 
 ### Admin Features
@@ -69,7 +72,7 @@
    - Manage product categories.
 
 2. **Manage Roles**:
-- Admin can give user role as Admin by Email of user to access more features.   
+   - Admin can give user role as Admin by Email of user to access more features. 
 
 
 <h2>Contact</h2>
