@@ -1,50 +1,80 @@
-# React + TypeScript + Vite
+<div align="center">
+<!-- <a href="https://snapgram-official.vercel.app/"><img  src="/public/assets/images/logo.svg" width="120" height="auto"/></a>
+<h2></h2> -->
+<h3>An e-commerce web application</h3>
+<h4>that provides a seamless shopping experience for users. This project includes various features such as product browsing, filtering, wishlist, cart management, reviews, order tracking, and admin functionalities.
+</h4>
+</div>
+<h2></h2>
+<!-- <center><a href="https://snapgram-official.vercel.app/"><img src="/public/assets/images/background.jpg"/></a></center> -->
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Technologies Used 
+* React.js
+* Redux Toolkit, Redux Presist, Redux Selectors
+* React Router Dom
+* TypeScript
+* Axios Library
+* React Hook Form 
+* Zod Validation
+* React Bootstrap
+* Lottie React
+* Swagger For API Testing
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<h2>Features</h2>
 
-## Expanding the ESLint configuration
+1. **Homepage**:
+   - Displays featured products with pagination for easy browsing.
+   - Category navigation bar for quick access.
+   - Price filter for refined searches.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. **Single Product Page**:
+   - Detailed product information (name, description, price, etc.).
+   - Add or remove the product from the cart and manage quantity.
+   - Add or remove reviews for the product.
+   - Displays related products.
 
-- Configure the top-level `parserOptions` property like this:
+3. **Products Page**:
+    - Includes All Products with pagination for navigating through products efficiently. 
+   - Includes a sidebar for advanced filtering:
+     - Filter by category, color, material,  price range
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+4. **Wishlist Page**:
+   - Displays products added to the wishlist for later consideration.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+5. **Shopping Cart Page**:
+   - View products added to the cart.
+   - Update product quantities.
+   - Confirm order for checkout.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+6. **Orders Page**:
+   - Displays all confirmed orders with product details and quantities.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+7. **Authentication**:
+   - Sign-up and sign-in pages for user account management.
+
+8. **About Us Page**:
+   - Provides information about the website and the team behind it.
+
+9. **Profile Page**:
+   - A user profile page showcasing user information and providing options to edit the profile like update password.
+
+---
+
+### Admin Features
+1. **Dashboard Page**:
+   - Restricted access for Admin users only.
+   - Add new products to the inventory.
+   - Update or delete existing products.
+   - Manage product categories.
+
+2. **Manage Roles**:
+- Admin can give user role as Admin by Email of user to access more features.   
+
+
+<h2>Contact</h2>
+
+If you have any questions or need more information, please feel free to contact us:
+
+* **Email:** ahmedfaresss417@gmail.com
+* **LinkedIn:** https://www.linkedin.com/in/dev-ahmedfares/
