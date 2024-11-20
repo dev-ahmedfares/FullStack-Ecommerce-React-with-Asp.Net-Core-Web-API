@@ -74,6 +74,31 @@
 2. **Manage Roles**:
    - Admin can give user role as Admin by Email of user to access more features. 
 
+---
+
+## API Integration
+
+This project integrates an **ASP.NET Core API** for backend services, providing robust and scalable server-side functionality. Key integrations include:
+
+- **Products API**:
+  - Fetch, create, update, and delete products.
+  - Support for product filtering by category, color, material, and price.
+
+- **Cart and Wishlist API**:
+  - Manage cart items and wishlist items for users.
+  - Add, update, or remove items as needed.
+
+- **Orders API**:
+  - Create and Display confirmed orders with product and quantity details.
+
+- **Authentication API**:
+  - User registration and login functionality.
+  - Token-based authentication for secure access.
+
+- **Admin API**:
+  - Admin-specific endpoints for managing the dashboard, products, and categories.
+
+---
 
 <h2>Contact</h2>
 
