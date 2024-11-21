@@ -1,12 +1,19 @@
 <div align="center">
 <!-- <a href="https://snapgram-official.vercel.app/"><img  src="/public/assets/images/logo.svg" width="120" height="auto"/></a>
 <h2></h2> -->
-<h3>An e-commerce web application</h3>
-<h4>that provides a seamless shopping experience for users. This project includes various features such as product browsing, filtering, wishlist, cart management, reviews, orders, and admin functionalities.
+<h2><a href="https://fullstack-ecommerce-react-dotnet.netlify.app/">FullStack E-commerce Web Application (React & Asp.net Core Wep Api)</a></h2>
+<h4>that provides a seamless shopping experience for users. This project includes various features such as product browsing, filtering, wishlist, cart management, reviews, orders, and admin functionalities and more...
 </h4>
 </div>
 <h2></h2>
 <!-- <center><a href="https://snapgram-official.vercel.app/"><img src="/public/assets/images/background.jpg"/></a></center> -->
+
+## As a frontend developer
+ I integrated an ASP.NET Core API into the project by:  
+- Consuming RESTful endpoints to fetch and display data dynamically on the frontend.  
+- Handling API requests and responses efficiently using tools such as Axios.  
+- Implementing error handling mechanisms for a seamless user experience.  
+- Collaborating with the backend developer to ensure proper API integration and resolve any issues.  
 
 ## Technologies Used 
 * React.js
@@ -62,9 +69,8 @@
 9. **Skeleton And Animation**:
    - Implementation app skeleton in the case data is loading or fetching from api and some file animation for different state like there's a error or the page is empty or order is success and more ...
 
----
 
-### Admin Features
+## Admin Features
 1. **Dashboard Page**:
    - Restricted access for Admin users only.
    - Add new products to the inventory.
@@ -74,7 +80,6 @@
 2. **Manage Roles**:
    - Admin can give user role as Admin by Email of user to access more features. 
 
----
 
 ## API Integration
 
