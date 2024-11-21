@@ -5,7 +5,7 @@
 <h4>that provides a seamless shopping experience for users. This project includes various features such as product browsing, filtering, wishlist, cart management, reviews, orders, and admin functionalities and more...
 </h4>
 </div>
-<h2></h2>
+<!-- <h2></h2> -->
 <!-- <center><a href="https://snapgram-official.vercel.app/"><img src="/public/assets/images/background.jpg"/></a></center> -->
 
 ## As a frontend developer
@@ -103,7 +103,6 @@ This project integrates an **ASP.NET Core API** for backend services, providing 
 - **Admin API**:
   - Admin-specific endpoints for managing the dashboard, products, and categories.
 
----
 
 <h2>Contact</h2>
 
