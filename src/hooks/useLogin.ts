@@ -13,6 +13,10 @@ function useLogin() {
     register,
   } = useForm<signInType>({
     resolver: zodResolver(signInSchema),
+    defaultValues:{
+      userName:"Admin2",
+      password:"Admin@123#"
+    }
   });
   
   const [searchParams, setSearchParams] = useSearchParams();
