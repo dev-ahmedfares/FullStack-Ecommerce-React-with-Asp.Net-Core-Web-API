@@ -16,15 +16,17 @@ const actAddReview = createAsyncThunk("reviews/actAddReview",async(review:TRevie
                 Authorization:`Bearer ${auth.accessToken}`
             }
         })
+        
         if (response.data === "Review made before") {
             await axios.put(`/Review/UpdateReview`,review,{
                 headers:{
                     Authorization:`Bearer ${auth.accessToken}`
                 }
             })
+            return {type:"update",review :{comment:review.comment,rating:review.rating,date:`${new Date()}`,userName:auth.user?.userName as string}}
         }
         
-        
+        return {type:"add",review :{comment:review.comment,rating:review.rating,date:`${new Date()}`,userName:auth.user?.userName as string}}
     } catch (error) {
         return rejectWithValue(axiosErrorHandler(error))
     }

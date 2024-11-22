@@ -12,6 +12,8 @@ const actDelReview = createAsyncThunk("reviews/actDelReview",async(productId:num
                 Authorization:`Bearer ${auth.accessToken}`
             }
         })
+
+        return auth.user?.userName
     } catch (error) {
         return rejectWithValue(axiosErrorHandler(error))
     }

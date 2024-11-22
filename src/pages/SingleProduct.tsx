@@ -15,13 +15,12 @@ import {
   actGetReviewByProductId,
   reviewCleanUp,
 } from "@store/Review/reviewSlice";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 export default function SingleProduct() {
   const params = useParams();
-  const [refreshReview, setRefreshReview] = useState(false);
   const productId = Number(params.productId);
 
   const dispatch = useAppDispatch();
@@ -93,8 +92,6 @@ export default function SingleProduct() {
             />
 
             <TabsSingleProduct
-              refreshReview={refreshReview}
-              setRefreshReview={setRefreshReview}
               reviews={reviews}
               {...singleProduct}
               userName={user.userName}

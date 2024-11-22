@@ -1,4 +1,12 @@
-import { Button, CloseButton, Container, Form, Spinner, Tab, Tabs } from "react-bootstrap";
+import {
+  Button,
+  CloseButton,
+  Container,
+  Form,
+  Spinner,
+  Tab,
+  Tabs,
+} from "react-bootstrap";
 import styles from "./styles.module.css";
 import { TProduct } from "@customTypes/index";
 import StaticStarsRating from "../StaticStarsRating/StaticStarsRating";
@@ -9,25 +17,25 @@ import { reviewSchema, TReviewType } from "@validation/reviewSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppDispatch } from "@store/hooks";
 import { actAddReview, actDelReview } from "@store/Review/reviewSlice";
-import UserSvg from "@assets/svg/user.svg?react"
+import UserSvg from "@assets/svg/user.svg?react";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
-
-const { tabsParent, tab,imageUser,btnClose } = styles;
+const { tabsParent, tab, imageUser, btnClose } = styles;
 
 type TTabsProps = TProduct & {
   email?: string;
   userId?: number;
   userName?: string;
   loadingReview: string;
-  errorReview:string | null;
-  reviews:{
+  errorReview: string | null;
+  reviews: {
     comment: string;
     date: string;
     rating: number;
     userName: string;
-  }[],
-  setRefreshReview:(value:boolean)=> void,
-  refreshReview:boolean
+  }[];
+
 };
 
 export default function TabsSingleProduct({
@@ -39,11 +47,11 @@ export default function TabsSingleProduct({
   loadingReview,
   // staticElement
   // errorReview,
-  setRefreshReview,
-  refreshReview,
-  reviews
+
+  reviews,
 }: TTabsProps) {
-  
+  const [isDeletingReview, setIsDeletingReview] = useState(false);
+  const [ refreshReview, setRefreshReview] = useState(false)
   const {
     register,
     handleSubmit,
@@ -61,33 +69,43 @@ export default function TabsSingleProduct({
       rating: data.rating,
       productId,
     };
-    await dispatch(actAddReview(reviewInfo));
-    reset()
-    setRefreshReview(!refreshReview)
+    await dispatch(actAddReview(reviewInfo))
+      .unwrap()
+      .then(() => toast.success("Review successfully Added"))
+      .catch((err) => toast.error(err)).finally(()=> setRefreshReview(curr=> !curr));
+    reset();
     
- 
   };
 
-  // Delete Review 
-  const handleDeleteReview = async (productId:number)=> {
+  // Delete Review
+  const handleDeleteReview = async (productId: number) => {
+    setIsDeletingReview(true);
     await dispatch(actDelReview(productId))
-    setRefreshReview(!refreshReview)
-  }
-
-  function transformDatetime(reviewDate:string) {
-
-    const date = new Date(reviewDate);
+      .unwrap()
+      .then(() => {
+        setIsDeletingReview(false)
+        toast.success("Review Deleted")
+      })
+      .catch((err) => {
+        setIsDeletingReview(false);
+        toast.error(err);
+      });
     
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+  };
+
+  function transformDatetime(reviewDate: string) {
+    const date = new Date(reviewDate);
+
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
     const year = date.getFullYear();
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    const seconds = String(date.getSeconds()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+    const seconds = String(date.getSeconds()).padStart(2, "0");
 
     // Format the date and time
     return `${day}/${month}/${year} at ${hours}:${minutes}:${seconds}`;
-}
+  }
 
   return (
     <div className={tabsParent}>
@@ -121,27 +139,44 @@ export default function TabsSingleProduct({
           </Tab>
           <Tab eventKey="review" title="Review" className={tab}>
             <div>
-              <h4 className={`${reviews.length === 0 ? "mb-4" : ""}`}>{reviews.length ? reviews.length : "There's no"} review for {productName}</h4>
-              {reviews.length ? <ul className={`${reviews.length >= 3 ? "overflow-y-auto" : ""}`}>
-                
-                {reviews.map((review,idx)=>(
-                  <li key={`${review.date} ${idx}`}>
-                  <div>
-                    <span className={imageUser}>
-                    <UserSvg />
-                    </span>
-                    <div>
-                      <StaticStarsRating  size={17} rating={review.rating} />
-                      <p>
-                        <span>{review.userName}</span> - <span>{transformDatetime(review.date)}</span>
-                      </p>
-                      <p>{review.comment}</p>
-                    </div>
-                    {userName === review.userName && <span className={btnClose}><CloseButton onClick={()=>handleDeleteReview(productId)}/></span>}
-                  </div>
-                </li>
-                ))}
-              </ul> : null}
+              <h4 className={`${reviews.length === 0 ? "mb-4" : ""}`}>
+                {reviews.length ? reviews.length : "There's no"} review for{" "}
+                {productName}
+              </h4>
+              {reviews.length ? (
+                <ul
+                  className={`${reviews.length >= 3 ? "overflow-y-auto" : ""}`}
+                >
+                  {reviews.map((review, idx) => (
+                    <li key={`${review.date} ${idx}`}>
+                      <div>
+                        <span className={imageUser}>
+                          <UserSvg />
+                        </span>
+                        <div>
+                          <StaticStarsRating size={17} rating={review.rating} />
+                          <p>
+                            <span>{review.userName}</span> -{" "}
+                            <span>{transformDatetime(review.date)}</span>
+                          </p>
+                          <p>{review.comment}</p>
+                        </div>
+                        {userName === review.userName && (
+                          <span className={btnClose}>
+                            {isDeletingReview ? (
+                              <Spinner size="sm" animation="border" />
+                            ) : (
+                              <CloseButton
+                                onClick={() => handleDeleteReview(productId)}
+                              />
+                            )}
+                          </span>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
               <div>
                 <span>Add a review</span>
                 <Form onSubmit={handleSubmit(onSubmit)}>
@@ -151,7 +186,11 @@ export default function TabsSingleProduct({
                       control={control}
                       rules={{ required: true }}
                       render={({ field }) => (
-                        <StarsRating refreshReview={refreshReview} size={22} onSetRating={field.onChange} />
+                        <StarsRating
+                          refreshReview={refreshReview}
+                          size={22}
+                          onSetRating={field.onChange}
+                        />
                       )}
                     />
                     <Form.Text muted>
@@ -172,7 +211,7 @@ export default function TabsSingleProduct({
                   <Button
                     variant="primary"
                     type="submit"
-                    disabled={loadingReview === "pending"}
+                    disabled={loadingReview === "pending" || isDeletingReview}
                   >
                     {loadingReview === "pending" ? (
                       <>

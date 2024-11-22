@@ -3,20 +3,23 @@ import { createSlice } from "@reduxjs/toolkit";
 import actAddReview from "./act/actAddReview";
 import actGetReviewByProductId from "./act/actGetReviewByProductId";
 import actDelReview from "./act/actDelReview";
+type TReview = {
+  comment: string;
+  date: string;
+  rating: number;
+  userName: string;
+}
 
 type TReviewState = {
   loading: TLoading;
+  loadingDelReview: TLoading;
   error: string | null;
-  reviews: {
-    comment: string;
-    date: string;
-    rating: number;
-    userName: string;
-  }[];
+  reviews: TReview[];
 };
 
 const initialState: TReviewState = {
   loading: "idle",
+  loadingDelReview: "idle",
   error: null,
   reviews: [],
 };
@@ -38,8 +41,22 @@ const reviewSlice = createSlice({
         state.loading = "pending";
         state.error = null;
       })
-      .addCase(actAddReview.fulfilled, (state) => {
+      .addCase(actAddReview.fulfilled, (state,action) => {
         state.loading = "succeeded";
+        if (action.payload.type === "add") {
+
+          state.reviews  = [...state.reviews,action.payload.review]
+        } else {
+          state.reviews  = state.reviews.map((review)=> {
+            if (review.userName === action.payload.review.userName) {
+              return action.payload.review
+            } else {
+              return review
+            }
+          })
+
+        }
+        
       })
       .addCase(actAddReview.rejected, (state, action) => {
         state.loading = "failed";
@@ -63,18 +80,21 @@ const reviewSlice = createSlice({
           state.error = action.payload;
         }
       });
+
     // Delete Review By Product Id 
     builder
       .addCase(actDelReview.pending, (state) => {
-        state.loading = "pending";
+        state.loadingDelReview = "pending";
         state.error = null;
       })
-      .addCase(actDelReview.fulfilled, (state) => {
-        state.loading = "succeeded";
-
+      .addCase(actDelReview.fulfilled, (state,action) => {
+        state.loadingDelReview = "succeeded";
+        if (action.payload) {
+          state.reviews = state.reviews.filter((review)=> review.userName !== action.payload)
+        }
       })
       .addCase(actDelReview.rejected, (state, action) => {
-        state.loading = "failed";
+        state.loadingDelReview = "failed";
         if (isString(action.payload)) {
           state.error = action.payload;
         }
