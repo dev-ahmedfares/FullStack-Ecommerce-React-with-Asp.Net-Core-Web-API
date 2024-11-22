@@ -6,6 +6,7 @@ import { useState } from "react";
 import { actConfirmOrder } from "@store/order/orderSlice";
 import { clearCartAfterPlaceOrder } from "@store/cart/cartSlice";
 
+
 export default function CartSubtotalPrice({
   products,
 }: {
@@ -38,6 +39,8 @@ export default function CartSubtotalPrice({
       .then(() => {
         dispatch(clearCartAfterPlaceOrder());
         setShowModal(false);
+
+
       })
       .catch((err) => setError(err))
       .finally(() => setConfirmOrderLoading(false));

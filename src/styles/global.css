@@ -219,3 +219,25 @@ header svg:hover {
   border-color: var(--gray-300);
   color: white;
 }
+
+/* Toast */
+.Toastify__toast {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  padding: 16px;
+  color: var(--primary);
+
+}
+
+@media (max-width: 768px) {
+  .Toastify__toast {
+    background-color: #f8f9fa;
+    font-size: 14px;
+    padding: 12px;
+    max-width: 90%; /* Ensures it fits smaller screens */
+    margin: auto;
+    
+  }
+}

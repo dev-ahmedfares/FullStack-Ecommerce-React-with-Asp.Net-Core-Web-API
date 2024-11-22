@@ -5,6 +5,7 @@ import { memo, useEffect, useState } from "react";
 import { addToCart, removeProductFromCart } from "@store/cart/cartSlice";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { actToggleLike } from "@store/wishlist/wishlistSlice";
+import toast from "react-hot-toast";
 
 const { tableParent, productImg, btnAddCart } = styles;
 
@@ -17,28 +18,37 @@ const WishlistItem = memo(
     price,
     productImages,
     stockQuantity,
+    isLiked
   }: TWishlistItemProps) => {
     const dispatch = useAppDispatch();
     const [isBtnClicked, setIsBtnClicked] = useState(false);
     const [isToggleLike, setIsToggleLike] = useState(false);
     const [isAddedToCart,setIsAddedToCart] = useState(false)
     const {items} = useAppSelector(state=> state.cart)
-
+    console.log("Render")
     useEffect(() => {
       if (!isBtnClicked) return;
       const debounce = setTimeout(() => {
         setIsBtnClicked(false);
       }, 300);
-
+    
       return () => clearTimeout(debounce);
-    }, [isBtnClicked]);
+    }, [isBtnClicked,isAddedToCart]);
 
     const handleDeleteFromWishlist = (productId: number) => {
       if (isToggleLike) return;
       setIsToggleLike(true);
       dispatch(actToggleLike(productId))
         .unwrap()
-        .then(() => setIsToggleLike(false))
+        .then(() => {
+          setIsToggleLike(false)
+          if (!isLiked) {
+            toast.success("Successfully added to wishlist")
+          } else {
+            toast.success("Successfully removed from wishlist")
+
+          }
+        })
         .catch(() => setIsToggleLike(false));
     };
 
@@ -50,10 +60,11 @@ const WishlistItem = memo(
       }
     },[items,productId])
 
-    // staticElement need to handle after implement cart
+    
     function handleAddCart() {
       dispatch(addToCart(productId))
       setIsBtnClicked(true);
+      toast.success("Successfully added to cart")
     }
 
 
@@ -61,6 +72,7 @@ const WishlistItem = memo(
       dispatch(removeProductFromCart(productId))
       setIsBtnClicked(true);
       setIsAddedToCart(false)
+      toast.success(`Successfully removed from cart`)
     }
 
     return (

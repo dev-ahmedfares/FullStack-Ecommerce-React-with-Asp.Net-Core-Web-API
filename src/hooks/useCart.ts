@@ -7,6 +7,7 @@ import {
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { resetOrderStatus } from "@store/order/orderSlice";
 import { useCallback, useEffect } from "react";
+import toast from "react-hot-toast";
 
 export default function useCart() {
   const { productsFullInfo, items, loading, error } = useAppSelector(
@@ -22,6 +23,7 @@ export default function useCart() {
   const handleQuantityOfCart = useCallback(
     (id: number, quantity: number) => {
       dispatch(changeQuantity({ id, quantity }));
+      toast.success(`Quantity change to ${quantity}`)
     },
     [dispatch]
   );
@@ -29,6 +31,7 @@ export default function useCart() {
   const handleDeleteProductFromCart = useCallback(
     (id: number) => {
       dispatch(removeProductFromCart(id));
+      toast.success("Successfully Removed from cart")
     },
     [dispatch]
   );

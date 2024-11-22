@@ -7,6 +7,7 @@ import { Button, Form, Spinner } from "react-bootstrap";
 import styles from "./styles.module.css";
 
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const {
   detailsParent,
@@ -16,11 +17,22 @@ const {
   description,
   starsHolder,
 } = styles;
-export default function ProductDetails({averageRating, productName, price, quantity, productId,productDescription,stockQuantity,reviewsCount }:  TProduct & {averageRating:number,reviewsCount:number}) {
- const {items} =useAppSelector(state=> state.cart)
+export default function ProductDetails({
+  averageRating,
+  productName,
+  price,
+  quantity,
+  productId,
+  productDescription,
+  stockQuantity,
+  reviewsCount,
+}: TProduct & { averageRating: number; reviewsCount: number }) {
+  const { items } = useAppSelector((state) => state.cart);
   // staticElement
-  const [selectedQuantity, setSelectedQuantity] = useState(items[productId] ?? 1);
- 
+  const [selectedQuantity, setSelectedQuantity] = useState(
+    items[productId] ?? 1
+  );
+
   // staticElement here problem of quantity not found in product object must came form API
   const [isBtnClicked, setIsBtnClicked] = useState(false);
 
@@ -38,24 +50,24 @@ export default function ProductDetails({averageRating, productName, price, quant
     return () => clearTimeout(debounce);
   }, [isBtnClicked]);
 
-
   function handleAddCart(id: number, quantity: number) {
-    if (quantity === 0 ) {
-      handleRemoveFromCart()
-     
+    if (quantity === 0) {
+      handleRemoveFromCart();
+      toast.success("Successfully Removed From Cart");
     } else {
-
       dispatch(changeQuantity({ id, quantity }));
+      toast.success(`Quantity changed to ${quantity}`);
     }
 
     setIsBtnClicked(true);
   }
 
   function handleRemoveFromCart() {
-    dispatch(removeProductFromCart(productId))
+    dispatch(removeProductFromCart(productId));
+    toast.success("Successfully removed from cart")
   }
 
-  const quantityArr = Array(stockQuantity + 1 )
+  const quantityArr = Array(stockQuantity + 1)
     .fill(0)
     .map((_, idx) => {
       const value = idx++;
@@ -65,7 +77,7 @@ export default function ProductDetails({averageRating, productName, price, quant
         </option>
       );
     });
-  
+
   return (
     <div className={detailsParent}>
       <div>
@@ -75,8 +87,8 @@ export default function ProductDetails({averageRating, productName, price, quant
       <div className={starsHolder}>
         {/* staticElement fix rating and add averageRating*/}
         <div>
-        <StaticStarsRating rating={averageRating} size={17} />
-        {reviewsCount ? <span>( {reviewsCount} reviews)</span> : null}
+          <StaticStarsRating rating={averageRating} size={17} />
+          {reviewsCount ? <span>( {reviewsCount} reviews)</span> : null}
         </div>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut
@@ -98,33 +110,46 @@ export default function ProductDetails({averageRating, productName, price, quant
             <Form.Select
               aria-label="Select Quantity"
               value={selectedQuantity}
+              disabled={isQuantityReachedMax}
               onChange={(e) => setSelectedQuantity(+e.target.value)}
             >
               {quantityArr}
             </Form.Select>
           </div>
-            
-          <Button
-            disabled={isBtnClicked || isQuantityReachedMax }
-            onClick={() => handleAddCart(+productId, +selectedQuantity)}
-            variant="primary"
-          >
-            {isBtnClicked ? (
-              <div className="d-flex align-items-center gap-2 m-0 justify-content-center">
-                <Spinner size="sm" animation="border" />{" "}
-              </div>
-            ) : (
-              "ADD TO CART"
-            )}
-          </Button>
-
+          {isQuantityReachedMax ? (
+            <Button
+              disabled={isBtnClicked}
+              onClick={() => handleRemoveFromCart()}
+              variant="primary"
+            >
+              {isBtnClicked ? (
+                <div className="d-flex align-items-center gap-2 m-0 justify-content-center">
+                  <Spinner size="sm" animation="border" />{" "}
+                </div>
+              ) : (
+                "REMOVE FROM CART"
+              )}
+            </Button>
+          ) : (
+            <Button
+              disabled={isBtnClicked || isQuantityReachedMax}
+              onClick={() => handleAddCart(+productId, +selectedQuantity)}
+              variant="primary"
+            >
+              {isBtnClicked ? (
+                <div className="d-flex align-items-center gap-2 m-0 justify-content-center">
+                  <Spinner size="sm" animation="border" />{" "}
+                </div>
+              ) : (
+                "ADD TO CART"
+              )}
+            </Button>
+          )}
         </div>
       </div>
       <div className={description}>
         <h3>Description</h3>
-        <p>
-          {productDescription}
-        </p>
+        <p>{productDescription}</p>
       </div>
     </div>
   );

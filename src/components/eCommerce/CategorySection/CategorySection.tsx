@@ -24,7 +24,6 @@ const {
 
 export default function CategorySection() {
 
-
   const {
     allProducts,
     categories,

@@ -68,8 +68,10 @@ p {
   color: var(--primary-light) !important;
 }
 
-.quantityList select:focus {
+.quantityList select:focus,
+.quantityList select:disabled {
   box-shadow: none;
+  background-color: white;
 }
 
 .parentActions {
