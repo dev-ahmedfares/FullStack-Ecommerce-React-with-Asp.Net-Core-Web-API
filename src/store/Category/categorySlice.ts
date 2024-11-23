@@ -7,12 +7,16 @@ import actDelCategoryById from "./act/actDelCategoryById";
 type TInitialState = {
   records: TCategory[];
   loading: TLoading;
+  loadingCategories: TLoading;
+  loadingAddingProduct: TLoading;
   error: string | null;
 };
 
 const initialState: TInitialState = {
   records: [],
   loading: "idle",
+  loadingCategories: "idle",
+  loadingAddingProduct: "idle",
   error: null,
 };
 
@@ -22,20 +26,23 @@ const categorySlice = createSlice({
   reducers: {
     categoriesCleanUp: (state) => {
       state.records = [];
+      state.error=null;
+      state.loading= "idle";
+      state.loadingCategories= "idle";
     },
   },
   extraReducers: (builder) => {
     // Get All Categories
     builder.addCase(actGetGategories.pending, (state) => {
-      state.loading = "pending";
+      state.loadingCategories = "pending";
       state.error = null;
     });
     builder.addCase(actGetGategories.fulfilled, (state, action) => {
-      state.loading = "succeeded";
+      state.loadingCategories = "succeeded";
       state.records = action.payload;
     });
     builder.addCase(actGetGategories.rejected, (state, action) => {
-      state.loading = "failed";
+      state.loadingCategories = "failed";
       if (isString(action.payload)) {
         state.error = action.payload;
       }
@@ -43,14 +50,14 @@ const categorySlice = createSlice({
 
     // Add New Category 
     builder.addCase(actAddNewCategory.pending, (state) => {
-      state.loading = "pending";
+      state.loadingAddingProduct = "pending";
       state.error = null;
     });
     builder.addCase(actAddNewCategory.fulfilled, (state) => {
-      state.loading = "succeeded";
+      state.loadingAddingProduct = "succeeded";
     });
     builder.addCase(actAddNewCategory.rejected, (state, action) => {
-      state.loading = "failed";
+      state.loadingAddingProduct = "failed";
       if (isString(action.payload)) {
         state.error = action.payload;
       }

@@ -28,6 +28,7 @@ import {
 import SelectedBtns from "../SelectedBtns/SelectedBtns";
 import CategoryModal from "../CategoryModal/CategoryModal";
 import { ArrayOfColors, ArrayOfMaterials } from "@data/data";
+import toast from "react-hot-toast";
 
 
 const { tableParent, productImg, btn, form, pagination, select } = styles;
@@ -87,9 +88,9 @@ export default function TableList() {
 
   const {
     allCategories,
-    loading: loadingCategories,
-    error: errorCategories
-    
+    loading,
+    error: errorCategories,
+    loadingAddingProduct
   } = useGetCategories(refreshCategory);
 
   const categoryArr = allCategories.map((category) => {
@@ -102,7 +103,7 @@ export default function TableList() {
 
   // Delete Product Handler
   const handleDeleteProduct = async (id: number) => {
-    await dispatch(actDelProductById(id));
+    await dispatch(actDelProductById(id)).unwrap().then(()=> toast.success("Product deleted successfully"));
     setShowModalForDelete(false);
   };
 
@@ -208,13 +209,13 @@ export default function TableList() {
       materialsId.map((materialId) =>
         formData.append("ProductMaterials", String(materialId))
       );
-      await dispatch(actUpdateProductById(formData));
+      await dispatch(actUpdateProductById(formData)).unwrap().then(()=> toast.success("Product successfully updated"));;
     } else {
       colorsId.map((colorId) => formData.append("ColorIds", String(colorId)));
       materialsId.map((materialId) =>
         formData.append("MaterialsId", String(materialId))
       );
-      await dispatch(actAddProduct(formData));
+      await dispatch(actAddProduct(formData)).unwrap().then(()=> toast.success("Product successfully added"));
     }
 
     // For Reset After submit
@@ -541,10 +542,11 @@ export default function TableList() {
       </Modal>
       {/* Modal For Category */}
       <CategoryModal
+      loadingAddingProduct={loadingAddingProduct}
         showCategoryModal={showCategoryModal}
         setShowCategoryModal={setShowCategoryModal}
         categories={allCategories}
-        loading={loadingCategories}
+        loading={loading}
         error={errorCategories}
         setRefreshCategory={setRefreshCategory}
       />

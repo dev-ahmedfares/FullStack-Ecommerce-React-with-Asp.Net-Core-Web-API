@@ -9,8 +9,12 @@ import {
 } from "@validation/addNewCategorySchema";
 import { TLoading } from "@customTypes/index";
 import { useAppDispatch } from "@store/hooks";
-import { actAddNewCategory, actDelCategoryById } from "@store/Category/categorySlice";
-
+import {
+  actAddNewCategory,
+  actDelCategoryById,
+} from "@store/Category/categorySlice";
+import toast from "react-hot-toast";
+import { useState } from "react";
 
 const { form, categoryContainer } = styles;
 
@@ -24,19 +28,21 @@ type TCategoryProps = {
   }[];
   loading: TLoading;
   error: string | null;
-  setRefreshCategory:(value:boolean)=> void
+  setRefreshCategory: (value: boolean) => void;
+  loadingAddingProduct:TLoading
 };
 
 export default function CategoryModal({
   showCategoryModal,
   setShowCategoryModal,
   categories,
-// staticElement
+  // staticElement
   // error,
   loading,
-  setRefreshCategory
+  loadingAddingProduct,
+  setRefreshCategory,
 }: TCategoryProps) {
-    const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const {
     register,
     formState: { errors },
@@ -46,33 +52,41 @@ export default function CategoryModal({
     resolver: zodResolver(addNewCategorySchema),
   });
 
-//   Add Category 
-  const handleAddCategories:SubmitHandler<TAddNewCategory> = async(data) => {
-    
+  // i will check for every category to display loading spinner or not by id of category
+  const [loadingDeleting, setLoadingDeleting] = useState<number | null>(null);
+
+  //   Add Category
+  const handleAddCategories: SubmitHandler<TAddNewCategory> = async (data) => {
     await dispatch(actAddNewCategory(data))
-    setRefreshCategory(true)
-    setShowCategoryModal(false)
-    reset()
+      .unwrap()
+      .then(() => toast.success("Category successfully added"));
+    setRefreshCategory(true);
+    setShowCategoryModal(false);
+    reset();
   };
 
-//   Delete Category 
-const handleDeleteCategory = async (id:number)=> {
-    // At least Three Category to be able to delete category 
+  //   Delete Category
+  const handleDeleteCategory = async (id: number) => {
+    // At least Three Category to be able to delete category
     if (categories.length === 2) return;
+    setLoadingDeleting(id);
     await dispatch(actDelCategoryById(id))
-    setRefreshCategory(true)
-}
+      .unwrap()
+      .then(() => toast.success("Category successfully deleted"))
+      .finally(() => setLoadingDeleting(null));
+    setRefreshCategory(true);
+  };
 
   return (
     <Modal
       show={showCategoryModal}
-      
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      onShow={()=>setRefreshCategory(false)}
+      onShow={() => setRefreshCategory(false)}
       onHide={() => {
-        reset()
-        setShowCategoryModal(false)}}
+        reset();
+        setShowCategoryModal(false);
+      }}
     >
       <Modal.Header closeButton className="border-0" />
       <Modal.Body className="pt-0">
@@ -80,23 +94,37 @@ const handleDeleteCategory = async (id:number)=> {
           <div className={categoryContainer}>
             <h2>All Categories</h2>
             <section>
-            {categories.map((category,idx) => {
-                let count = idx + 1
-              return (
-                
-                <section key={category.categoryId}>
-                    <h2>Category [{count++}] {categories.length >= 3 ? <span><CloseButton onClick={()=>handleDeleteCategory(category.categoryId)}/></span>: null}</h2>
-                  <span>
-                    <h5>Name:</h5>
-                    <p>{category.categoryName}</p>
-                  </span>
-                  <span>
-                    <h5>Description:</h5>
-                    <p>{category.categoryDescription}</p>
-                  </span>
-                </section>
-              );
-            })}
+              {categories.map((category, idx) => {
+                let count = idx + 1;
+                return (
+                  <section key={category.categoryId}>
+                    <h2>
+                      Category [{count++}]{" "}
+                      {categories.length >= 3 ? (
+                        <span>
+                          {loadingDeleting ===  category.categoryId ? (
+                            <Spinner size="sm" />
+                          ) : (
+                            <CloseButton
+                              onClick={() =>
+                                handleDeleteCategory(category.categoryId)
+                              }
+                            />
+                          )}
+                        </span>
+                      ) : null}
+                    </h2>
+                    <span>
+                      <h5>Name:</h5>
+                      <p>{category.categoryName}</p>
+                    </span>
+                    <span>
+                      <h5>Description:</h5>
+                      <p>{category.categoryDescription}</p>
+                    </span>
+                  </section>
+                );
+              })}
             </section>
           </div>
           <h2>Add Category</h2>
@@ -104,34 +132,33 @@ const handleDeleteCategory = async (id:number)=> {
             label="Name"
             register={register}
             name="categoryName"
-              error={errors.categoryName?.message}
+            error={errors.categoryName?.message}
           />
           <Input
             as="textarea"
             label="Description"
             register={register}
             name="categoryDescription"
-              error={errors.categoryDescription?.message}
+            error={errors.categoryDescription?.message}
           />
-          
 
-           <div className="d-flex gap-2 justify-content-end">
-          <Button
-            disabled={loading === "pending"}
-            variant="secondary"
-            onClick={()=>{
-                
-                setShowCategoryModal(false)
-            reset()}}
-          >
-            Close
-          </Button>
-           
+          <div className="d-flex gap-2 justify-content-end">
+            <Button
+              disabled={loading === "pending"}
+              variant="secondary"
+              onClick={() => {
+                setShowCategoryModal(false);
+                reset();
+              }}
+            >
+              Close
+            </Button>
+
             <Button
               type="submit"
-              disabled={loading === "pending"}
+              disabled={loadingAddingProduct === "pending" || loading === "pending" || loadingDeleting !== null}
             >
-              {loading === "pending" ? (
+              {loadingAddingProduct === "pending" ? (
                 <>
                   <Spinner animation="border" size="sm" /> Adding...
                 </>
@@ -139,8 +166,7 @@ const handleDeleteCategory = async (id:number)=> {
                 "Add Category"
               )}
             </Button>
-          
-        </div> 
+          </div>
         </Form>
       </Modal.Body>
     </Modal>

@@ -4,7 +4,8 @@ import { useEffect } from "react"
 
 const useGetCategories = (refreshCategory?:boolean) => {
     const dispatch =useAppDispatch()
-    const {records:allCategories,loading,error}= useAppSelector(state=>state.categories)
+    
+    const {records:allCategories,loading,error,loadingCategories,loadingAddingProduct}= useAppSelector(state=>state.categories)
 
     useEffect(()=> {
         const promise = dispatch(actGetGategories())
@@ -14,7 +15,7 @@ const useGetCategories = (refreshCategory?:boolean) => {
         }
     },[dispatch,refreshCategory])
 
-    return {allCategories,loading,error}
+    return {allCategories,loading,error,loadingCategories,loadingAddingProduct}
 }
 
 

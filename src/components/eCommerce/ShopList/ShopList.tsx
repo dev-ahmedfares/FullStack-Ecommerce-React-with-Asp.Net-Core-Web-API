@@ -73,6 +73,7 @@ export default function ShopList() {
     setFilterMaterial(null);
     setPriceRange(9999999);
   };
+  
   const handleFilterMaterial = () => {
     handleCategoryParams(99999);
     setFilterColor(null);
