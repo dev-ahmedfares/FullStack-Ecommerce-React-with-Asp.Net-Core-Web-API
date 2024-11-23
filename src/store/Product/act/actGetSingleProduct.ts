@@ -17,16 +17,7 @@ const actGetSingleProduct = createAsyncThunk(
         signal,
       });
       
-      // if (withRelated && singleProduct.data.productImages.length > 0) {
-      //   const relatedProducts = await axios.get(
-      //     `/Product/categoryproduct/${singleProduct.data.categoryId}?pageNumber=1&pageSize=10`
-      //   );
-      //   return { 
-      //     singleProduct: singleProduct.data,
-      //     relatedProducts: relatedProducts.data,
-      //   };
-      // }
-      
+
       let relatedProductsRequest = null;
       if (withRelated) {
          relatedProductsRequest = productRequest.then((response)=>{

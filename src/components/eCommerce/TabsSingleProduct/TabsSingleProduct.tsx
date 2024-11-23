@@ -47,7 +47,7 @@ export default function TabsSingleProduct({
   loadingReview,
   // staticElement
   // errorReview,
-
+isAuthenticated,
   reviews,
 }: TTabsProps) {
   const [isDeletingReview, setIsDeletingReview] = useState(false);
@@ -66,7 +66,7 @@ export default function TabsSingleProduct({
   const dispatch = useAppDispatch();
   const onSubmit: SubmitHandler<TReviewType> = async (data) => {
     if (!accessToken) {
-      return ()=> navigate("/login?message=login_required")
+      return navigate("/login?message=login_required")
     }
     const reviewInfo = {
       comment: data.review,
