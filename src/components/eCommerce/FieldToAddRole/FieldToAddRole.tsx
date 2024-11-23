@@ -7,21 +7,30 @@ import { addRoleSchema, TAddRole } from "@validation/addRoleSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { actGiveUserRole } from "@store/auth/authSlice";
+import toast from "react-hot-toast";
 
 const { form } = styles;
 export default function FieldToAddRole() {
   const dispatch = useAppDispatch();
-  const { errorRole, loadingRole } = useAppSelector((state) => state.auth);
+  const {  loadingRole } = useAppSelector((state) => state.auth);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm<TAddRole>({
     resolver: zodResolver(addRoleSchema),
   });
 
   const handleAddRole: SubmitHandler<TAddRole> = (data) => {
-    dispatch(actGiveUserRole(data.email));
+    dispatch(actGiveUserRole(data.email)).unwrap().then((res)=> {
+      if (res === "Admin Added") {
+        toast.success("Email added as admin")
+        reset()
+      }
+    }).catch(()=>{
+      toast.error("Email not signup before or already admin")
+    });
    
   };
 
@@ -51,12 +60,7 @@ export default function FieldToAddRole() {
               "Submit Role"
             )}
           </Button>
-          {/* staticElement add toast for handle error or add at success */}
-          {errorRole && (
-          <Alert variant="danger" className="mt-3 px-3 py-2">
-            {errorRole}
-          </Alert>
-        )}
+    
         </div>
       </Form>
     </>

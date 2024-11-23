@@ -10,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { actChangePassword } from "@store/auth/authSlice";
 import FieldToAddRole from "../FieldToAddRole/FieldToAddRole";
+import toast from "react-hot-toast";
 
 
 const { form, parent } = styles;
@@ -19,8 +20,7 @@ export default function AccountInfoForm() {
     register,
     formState: { errors },
     handleSubmit,
-    // staticElement
-    // reset,
+    reset,
   } = useForm<TChangePasswordForm>({
     resolver: zodResolver(changePasswordSchema),
   });
@@ -35,12 +35,21 @@ export default function AccountInfoForm() {
         newPassword: data.newPassword,
         userName: user?.userName as string,
       })
-    );
+    ).unwrap().then((res)=> {
+      if (res === "Password Change successfully") {
+        toast.success("Password changed successfully.")
+        reset()
+      }
+    }).catch(()=> {
+        
+        toast.error("old password is wrong.")
+      
+    });
 
     
     
-    // staticElement Handle Reset field after submit
-    // reset()
+
+    
   };
 
   return (
@@ -97,12 +106,7 @@ export default function AccountInfoForm() {
             )}
           </Button>
         </div>
-        {/* staticElement Toaster here */}
-        {error && (
-          <Alert variant="danger" className="mt-3 px-3 py-2">
-            {error}
-          </Alert>
-        )}
+        
       </Form>
       {roles.includes("Admin") && (
         <>

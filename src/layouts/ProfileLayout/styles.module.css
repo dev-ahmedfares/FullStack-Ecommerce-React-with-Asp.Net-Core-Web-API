@@ -2,10 +2,12 @@
     border-bottom: 1px solid var(--secondary-light);
     margin:0 0 20px ;
     padding:0 0 20px ;
+    display: none;
 }
 
 @media (min-width:768px) {
     .col {
+        display: block;
         border-bottom: none;
         border-right: 1px solid var(--secondary-light);
         margin:0 20px 0 0 ;
@@ -16,3 +18,4 @@
 .col a {
     border-radius: 0 !important;
 }
+
