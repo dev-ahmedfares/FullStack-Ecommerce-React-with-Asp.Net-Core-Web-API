@@ -12,7 +12,7 @@ export default function ProductMainDetails({
   averageRating,
   reviewsCount,
 }: {
-  singleProduct: TProduct;
+  singleProduct: TProduct ;
   averageRating: number;
   reviewsCount: number;
 }) {

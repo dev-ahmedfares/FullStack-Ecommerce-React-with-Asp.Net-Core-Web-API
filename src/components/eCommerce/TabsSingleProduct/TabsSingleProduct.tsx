@@ -15,11 +15,12 @@ import StarsRating from "../StarsRating/StarsRating";
 import Input from "@components/forms/Input/Input";
 import { reviewSchema, TReviewType } from "@validation/reviewSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useAppDispatch } from "@store/hooks";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { actAddReview, actDelReview } from "@store/Review/reviewSlice";
 import UserSvg from "@assets/svg/user.svg?react";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const { tabsParent, tab, imageUser, btnClose } = styles;
 
@@ -43,7 +44,6 @@ export default function TabsSingleProduct({
   productMaterials,
   productName,
   productId,
-  userName,
   loadingReview,
   // staticElement
   // errorReview,
@@ -61,9 +61,13 @@ export default function TabsSingleProduct({
   } = useForm<TReviewType>({
     resolver: zodResolver(reviewSchema),
   });
-
+  const {accessToken,user} =useAppSelector(state=> state.auth)
+  const navigate =useNavigate()
   const dispatch = useAppDispatch();
   const onSubmit: SubmitHandler<TReviewType> = async (data) => {
+    if (!accessToken) {
+      return ()=> navigate("/login?message=login_required")
+    }
     const reviewInfo = {
       comment: data.review,
       rating: data.rating,
@@ -161,7 +165,7 @@ export default function TabsSingleProduct({
                           </p>
                           <p>{review.comment}</p>
                         </div>
-                        {userName === review.userName && (
+                        {user?.userName === review.userName && (
                           <span className={btnClose}>
                             {isDeletingReview ? (
                               <Spinner size="sm" animation="border" />

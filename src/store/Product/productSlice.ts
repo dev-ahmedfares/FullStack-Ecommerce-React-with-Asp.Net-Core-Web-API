@@ -10,6 +10,7 @@ type TInitialState = {
   records: TProduct[];
   isTheLastPage: boolean;
   loading: TLoading;
+  loadingSingleProduct: TLoading;
   error: string | null;
   singleProduct: TProduct | null;
 };
@@ -18,6 +19,7 @@ const initialState: TInitialState = {
   records: [],
   singleProduct: null,
   loading: "idle",
+  loadingSingleProduct:"idle",
   error: null,
   isTheLastPage: false,
 };
@@ -34,7 +36,7 @@ const productSlice = createSlice({
     singleProductCleanUp: (state) => {
       state.singleProduct = null;
       state.records = [];
-      state.loading = "idle";
+      state.loadingSingleProduct = "idle";
     },
   },
   extraReducers: (builder) => {
@@ -58,11 +60,11 @@ const productSlice = createSlice({
     // Get Single Product By Id
     builder
       .addCase(actGetSingleProduct.pending, (state) => {
-        state.loading = "pending";
+        state.loadingSingleProduct = "pending";
         state.error = null;
       })
       .addCase(actGetSingleProduct.fulfilled, (state, action) => {
-        state.loading = "succeeded";
+        state.loadingSingleProduct = "succeeded";
 
         state.singleProduct = action.payload.singleProduct;
 
@@ -70,7 +72,7 @@ const productSlice = createSlice({
         state.isTheLastPage = action.payload?.relatedProducts.isTheLastPage;
       })
       .addCase(actGetSingleProduct.rejected, (state, action) => {
-        state.loading = "failed";
+        state.loadingSingleProduct = "failed";
 
         if (isString(action.payload)) {
           state.error = action.payload;

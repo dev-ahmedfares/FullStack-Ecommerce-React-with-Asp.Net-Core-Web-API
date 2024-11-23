@@ -6,6 +6,7 @@ import {
 import Loading from "@components/feedback/Loading";
 
 import GridList from "@components/shared/GridList/GridList";
+import { TProduct } from "@customTypes/index";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import {
   actGetSingleProduct,
@@ -33,7 +34,7 @@ export default function SingleProduct() {
     accessToken,
     // staticElement
     // loading: userLoading,
-    user,
+    // user,
   } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
@@ -56,7 +57,7 @@ export default function SingleProduct() {
   const {
     singleProduct,
     records,
-    loading: productsLoading,
+    loadingSingleProduct,
     error,
   } = useAppSelector((state) => state.products);
 
@@ -69,6 +70,7 @@ export default function SingleProduct() {
     isLiked: likedProducts.includes(el.productId),
     isAuthenticated: accessToken ? true : false,
   }));
+
   const {
     loading: loadingReview,
     error: errorReview,
@@ -81,25 +83,20 @@ export default function SingleProduct() {
     Math.round((allReviewsCount / (reviews.length * 5)) * 5) || 0;
 
   return (
-    <Loading status={productsLoading} error={error} type="table">
-      <>
-        {productsLoading === "succeeded" && singleProduct && user && (
-          <>
+          <Loading status={loadingSingleProduct} error={error} type="category">
             <ProductMainDetails
               averageRating={averageRating}
               reviewsCount={reviews.length}
-              singleProduct={singleProduct}
+              singleProduct ={singleProduct as TProduct}
             />
 
             <TabsSingleProduct
               reviews={reviews}
-              {...singleProduct}
-              userName={user.userName}
+              {...singleProduct as TProduct}
               errorReview={errorReview}
               loadingReview={loadingReview}
             />
-          </>
-        )}
+          
         <Container fluid={"md"}>
           <Row className="pt-5 ">
             <h4 className="fs-5 mb-3">RELATED PRODUCTS</h4>
@@ -109,7 +106,6 @@ export default function SingleProduct() {
             />
           </Row>
         </Container>
-      </>
     </Loading>
   );
 }

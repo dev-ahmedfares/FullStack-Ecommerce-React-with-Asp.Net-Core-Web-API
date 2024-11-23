@@ -28,7 +28,9 @@ export default function Loading({
     return <Component />;
   } else if (status === "failed") {
     return <LottieHandler type="error" message={error as string}/>;
+  } else if (status === "succeeded") {
+
+    return <>{children}</>;
   }
 
-  return <>{children}</>;
 }

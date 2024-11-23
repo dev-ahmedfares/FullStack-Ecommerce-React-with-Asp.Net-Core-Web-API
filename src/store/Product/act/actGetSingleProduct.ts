@@ -13,23 +13,40 @@ const actGetSingleProduct = createAsyncThunk(
     const { rejectWithValue, signal } = thunkAPI;
 
     try {
-      const singleProduct = await axios.get(`/Product/${productId}`, {
+      const productRequest =  axios.get(`/Product/${productId}`, {
         signal,
       });
       
-      if (withRelated && singleProduct.data.productImages.length > 0) {
-        const relatedProducts = await axios.get(
-          `/Product/categoryproduct/${singleProduct.data.categoryId}?pageNumber=1&pageSize=10`
-        );
-        return {
-          singleProduct: singleProduct.data,
-          relatedProducts: relatedProducts.data,
-        };
+      // if (withRelated && singleProduct.data.productImages.length > 0) {
+      //   const relatedProducts = await axios.get(
+      //     `/Product/categoryproduct/${singleProduct.data.categoryId}?pageNumber=1&pageSize=10`
+      //   );
+      //   return { 
+      //     singleProduct: singleProduct.data,
+      //     relatedProducts: relatedProducts.data,
+      //   };
+      // }
+      
+      let relatedProductsRequest = null;
+      if (withRelated) {
+         relatedProductsRequest = productRequest.then((response)=>{
+          const singleProduct = response.data;
+          return axios.get(
+            `/Product/categoryproduct/${singleProduct.categoryId}?pageNumber=1&pageSize=10`
+          );
+        })
       }
-      return {
-        singleProduct: singleProduct.data,
-        relatedProducts: { isTheLastPage: false, records: [] },
+      const [singleProductResponse, relatedProductsResponse] = await Promise.all([
+        productRequest,
+        relatedProductsRequest,
+      ]);
+
+      return { 
+        singleProduct: singleProductResponse.data,
+        relatedProducts: relatedProductsResponse?.data || { isTheLastPage: false, records: [] },
       };
+
+  
     } catch (error) {
       
       return rejectWithValue(axiosErrorHandler(error));
