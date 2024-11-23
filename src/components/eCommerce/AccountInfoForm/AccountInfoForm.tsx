@@ -4,7 +4,7 @@ import {
 } from "@validation/changePasswordSchema";
 import styles from "./styles.module.css";
 import Input from "@components/forms/Input/Input";
-import { Alert, Button, Form, Spinner } from "react-bootstrap";
+import {  Button, Form, Spinner } from "react-bootstrap";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
@@ -24,7 +24,7 @@ export default function AccountInfoForm() {
   } = useForm<TChangePasswordForm>({
     resolver: zodResolver(changePasswordSchema),
   });
-  const { loading, error, roles, user } = useAppSelector((state) => state.auth);
+  const { loading, roles, user } = useAppSelector((state) => state.auth);
 
   const dispatch = useAppDispatch();
 
