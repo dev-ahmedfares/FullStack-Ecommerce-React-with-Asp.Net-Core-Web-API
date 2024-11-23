@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { useState } from "react";
 import { actConfirmOrder } from "@store/order/orderSlice";
 import { clearCartAfterPlaceOrder } from "@store/cart/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 
 export default function CartSubtotalPrice({
@@ -20,6 +21,7 @@ export default function CartSubtotalPrice({
     }
   }, 0);
 
+  const navigate =useNavigate()
   const [showModal, setShowModal] = useState(false);
   const accessToken = useAppSelector((state) => state.auth.accessToken);
   const [confirmOrderLoading, setConfirmOrderLoading] = useState(false);
@@ -39,8 +41,6 @@ export default function CartSubtotalPrice({
       .then(() => {
         dispatch(clearCartAfterPlaceOrder());
         setShowModal(false);
-
-
       })
       .catch((err) => setError(err))
       .finally(() => setConfirmOrderLoading(false));
@@ -87,17 +87,21 @@ export default function CartSubtotalPrice({
         <span >SUBTOTAL:</span>
         <span>${subtotalPrice.toFixed(2)}</span>
       </div>
-      {accessToken && (
+      
         <div className="text-end mt-4">
           <Button
             variant="primary"
             className="text-white"
-            onClick={() => setShowModal(true)}
+            onClick={() => {
+              if (!accessToken) {
+                return navigate("/login?message=login_required")
+              }
+              setShowModal(true)}}
           >
             PLACE ORDER
           </Button>
         </div>
-      )}
+      
     </>
   );
 }

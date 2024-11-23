@@ -27,6 +27,7 @@ const orderSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+
     // Confirm Orders
     builder
       .addCase(actConfirmOrder.pending, (state) => {
@@ -35,6 +36,7 @@ const orderSlice = createSlice({
       })
       .addCase(actConfirmOrder.fulfilled, (state) => {
         state.loading = "succeeded";
+        
       })
       .addCase(actConfirmOrder.rejected, (state, action) => {
         state.loading = "failed";

@@ -9,6 +9,7 @@ const actConfirmOrder = createAsyncThunk(
     const { rejectWithValue, getState } = thunkAPI;
     const { cart, auth } = getState() as RootState;
     const API_URL = import.meta.env.VITE_FETCH_URL
+
     const ordersItems = cart.productsFullInfo.map((el) => ({
       productId: el.productId,
       productName: el.productName,
@@ -24,7 +25,7 @@ const actConfirmOrder = createAsyncThunk(
     };
 
     try {
-        await fetch(`${API_URL}/order`,{
+         await fetch(`${API_URL}/order`,{
         method:"POST",
         body: JSON.stringify(order),
         headers: {

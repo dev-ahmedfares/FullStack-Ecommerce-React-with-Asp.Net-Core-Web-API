@@ -32,8 +32,10 @@ export default function LottieHandler({ type, message }: TLottieHandlerProps) {
     type === "success" ||
     type === "notFound" ||
     type === "error";
+
   const addMargin =
     type === "success" || type === "notFound" || type === "error";
+    
   return (
     <div className={parent}>
       <div>

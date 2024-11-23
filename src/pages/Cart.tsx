@@ -19,6 +19,7 @@ export default function Cart() {
     placeOrderStatus,
   } = useCart();
 
+ 
   return (
     <>
       <Banner
@@ -27,8 +28,17 @@ export default function Cart() {
       />
       <Container fluid={"md"}>
         <Heading>Shopping Cart</Heading>
-        <Loading status={loading} error={error} type="cart">
-          {products.length ? (
+
+        
+          {placeOrderStatus === "succeeded" ? (
+            <LottieHandler
+              type="success"
+              message="Your order has been placed successfully"
+            />
+          ) :
+          
+          (<Loading status={loading} error={error} type="cart">
+            {products.length ? (
             <>
               <CartItemsList
                 products={products}
@@ -37,16 +47,11 @@ export default function Cart() {
               />
               <CartSubtotalPrice products={products} />
             </>
-          ) : placeOrderStatus === "succeeded" ? (
-            <LottieHandler
-              type="success"
-              message="Your order has been placed successfully"
-            />
           ) : (
             <LottieHandler type="empty" message="Your cart is empty" />
           )}
-        </Loading>
-      </Container>{" "}
+        </Loading>)}
+      </Container>
     </>
   );
 }

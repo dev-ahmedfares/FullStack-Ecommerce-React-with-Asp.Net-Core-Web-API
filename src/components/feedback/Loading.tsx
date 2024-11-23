@@ -33,4 +33,6 @@ export default function Loading({
     return <>{children}</>;
   }
 
+  return null
+
 }

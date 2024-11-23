@@ -45,9 +45,6 @@ export default function TabsSingleProduct({
   productName,
   productId,
   loadingReview,
-  // staticElement
-  // errorReview,
-isAuthenticated,
   reviews,
 }: TTabsProps) {
   const [isDeletingReview, setIsDeletingReview] = useState(false);

@@ -13,7 +13,7 @@ export default function useCart() {
   const { productsFullInfo, items, loading, error } = useAppSelector(
     (state) => state.cart
   );
-  const placeOrderStatus= useAppSelector(state=>state.orders.loading)
+  const placeOrderStatus= useAppSelector(state=> state.orders.loading)
   const products = productsFullInfo.map((el) => {
     return { ...el, quantity: items[el.productId] };
   });
