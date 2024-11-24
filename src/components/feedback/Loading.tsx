@@ -1,12 +1,13 @@
 import { TLoading } from "@customTypes/index";
 
-import { CategoriesSkeleton, TableSkeleton,ProductsSkeleton, CartSkeleton, LottieHandler } from "./index";
+import {  SingleProductPageSkeleton, TableSkeleton,ProductsSkeleton, CartSkeleton, LottieHandler } from "./index";
 
 const skeletonType = {
-  category: CategoriesSkeleton,
   product: ProductsSkeleton,
   cart: CartSkeleton,
-  table:TableSkeleton
+  table:TableSkeleton,
+  singleProduct:SingleProductPageSkeleton
+
 };
 
 type LoadingProps = {

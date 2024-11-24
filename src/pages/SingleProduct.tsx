@@ -83,7 +83,7 @@ export default function SingleProduct() {
     Math.round((allReviewsCount / (reviews.length * 5)) * 5) || 0;
 
   return (
-          <Loading status={loadingSingleProduct} error={error} type="category">
+          <Loading status={loadingSingleProduct} error={error} type="singleProduct">
             <ProductMainDetails
               averageRating={averageRating}
               reviewsCount={reviews.length}
