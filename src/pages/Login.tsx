@@ -1,3 +1,4 @@
+import { LottieHandler } from "@components/feedback";
 import Input from "@components/forms/Input/Input";
 import Heading from "@components/shared/Heading/Heading";
 import useLogin from "@hooks/useLogin";
@@ -9,7 +10,6 @@ export default function Login() {
     errors,
     handleSubmit,
     register,
-    error,
     accessToken,
     loading,
     searchParams,
@@ -22,10 +22,13 @@ export default function Login() {
 
   return (
     <Container fluid={"md"}>
-      <Heading style="text-center fs-3 my-5">User Login</Heading>
-      <Row>
-        <Col md={{ span: 6, offset: 3 }}>
-          {searchParams.get("message") === "account_created" && (
+      
+     <div className="mt-5 d-flex flex-column justify-content-center">
+     <Row>
+        <Col >
+        <Heading style="text-center fs-3 mb-5 my-md-5">User Login</Heading>
+         <div className="w-75   mx-auto">
+         {searchParams.get("message") === "account_created" && (
             <Alert variant="success">
               Your account successfully created, please login
             </Alert>
@@ -41,6 +44,7 @@ export default function Login() {
               register={register}
               name="userName"
               error={errors.userName?.message}
+              
             />
 
             <Input
@@ -79,14 +83,15 @@ export default function Login() {
                 Register
               </Link>
             </p>
-            {error && (
-              <Alert variant="danger" className="mt-3 px-3 py-2">
-                username or password is wrong please, try again
-              </Alert>
-            )}
+            
           </Form>
+         </div>
+        </Col>
+        <Col className="mt-5 d-none d-md-block pt-3">
+            <LottieHandler type="login" />
         </Col>
       </Row>
+     </div>
     </Container>
   );
 }

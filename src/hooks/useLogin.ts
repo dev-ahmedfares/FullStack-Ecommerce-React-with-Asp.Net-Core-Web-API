@@ -5,6 +5,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { actAuthLogin, resetUI } from "@store/auth/authSlice";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 function useLogin() {
   const {
@@ -30,7 +31,7 @@ function useLogin() {
     }
     dispatch(actAuthLogin(data))
       .unwrap()
-      .then(() => navigate("/"));
+      .then(() => navigate("/")).catch(()=> toast.error("username or password is wrong please, try again"));
   };
 
   useEffect(() => {

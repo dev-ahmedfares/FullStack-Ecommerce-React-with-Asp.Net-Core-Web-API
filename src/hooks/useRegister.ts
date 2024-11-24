@@ -4,6 +4,7 @@ import { signUpSchema, type TFormInputs } from "@validation/signUpSchema";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { actAuthRegister } from "@store/auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 function useRegister() {
   const {
     register,
@@ -20,7 +21,7 @@ function useRegister() {
     const { userName, email, password ,confirmPassword} = data;
     dispatch(actAuthRegister({ email,  password,confirmPassword,userName}))
       .unwrap()
-      .then(() => navigate("/login?message=account_created"));
+      .then(() => navigate("/login?message=account_created")).catch(()=> toast.error("username already taken"));
   };
 
 
