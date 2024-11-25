@@ -22,6 +22,6 @@ export default function GridList<T extends {productId?:number}>({records,cols=[{
           {renderItem(item)}
         </Col>
       ))
-    : <LottieHandler type="empty" message={message}/>}</>
+    : <div><LottieHandler type="empty" message={message}/></div>}</>
   )
 }

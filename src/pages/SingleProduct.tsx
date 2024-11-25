@@ -79,6 +79,12 @@ export default function SingleProduct() {
   const averageRating =
     Math.round((allReviewsCount / (reviews.length * 5)) * 5) || 0;
 
+
+     // Scroll to top when component is mounted
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
           <Loading status={loadingSingleProduct} error={error} type="singleProduct">
             <ProductMainDetails
@@ -98,6 +104,7 @@ export default function SingleProduct() {
           <Row className="pt-5 ">
             <h4 className="fs-5 mb-3">RELATED PRODUCTS</h4>
             <GridList
+            message="There Are no products"
               records={productsFullInfo}
               renderItem={(item) => <Product {...item} />}
             />
