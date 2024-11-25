@@ -9,7 +9,7 @@ import login from "@assets/lottieFiles/login.json";
 import register from "@assets/lottieFiles/register.json";
 import styles from "../LottieHandler/styles.module.css";
 
-const { parent, text, textEmpty, moveDown } = styles;
+const { parent, text, textEmpty, moveDown,fullHeight } = styles;
 
 const lottieFilesMap = {
   error,
@@ -41,7 +41,7 @@ export default function LottieHandler({ type, message }: TLottieHandlerProps) {
     type === "success" || type === "notFound" || type === "error";
 
   return (
-    <div className={parent}>
+    <div className={`${parent} ${type === "loading" ? fullHeight : ""}`}>
       <div>
         <Lottie
           animationData={lottie}

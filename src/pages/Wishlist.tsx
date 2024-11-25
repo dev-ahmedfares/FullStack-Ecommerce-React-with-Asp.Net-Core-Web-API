@@ -4,6 +4,7 @@ import Loading from "@components/feedback/Loading";
 import useWishlist from "@hooks/useWishlist";
 import { Container } from "react-bootstrap";
 
+
 export default function Wishlist() {
   const { products, loading, error } = useWishlist();
 
@@ -17,7 +18,8 @@ export default function Wishlist() {
         }
       />
       <Container fluid={"md"}>
-        <Loading status={loading} error={error} type="product">
+        <Loading status={loading} error={error} type="wishlistSkeleton">
+      
         {products.length > 0 ? (
             <>
               <WishlistItemsList products={products}  />

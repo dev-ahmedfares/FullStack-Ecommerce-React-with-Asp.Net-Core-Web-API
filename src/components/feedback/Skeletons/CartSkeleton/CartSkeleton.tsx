@@ -3,28 +3,110 @@ import ContentLoader from "react-content-loader";
 
 export default function CartSkeleton() {
   return (
-    <Row>
-      <Col>
-        <ContentLoader
-          speed={2}
-          width={270}
-          height={180}
-          viewBox="0 0 270 180"
-          backgroundColor="#e8e8e8"
-          foregroundColor="#f5f4f4"
-        >
-          <rect x="132" y="111" rx="0" ry="0" width="0" height="1" />
-          <rect x="38" y="200" rx="0" ry="0" width="2" height="2" />
-          <rect x="2" y="225" rx="4" ry="4" width="80" height="11" />
-          <rect x="2" y="248" rx="4" ry="4" width="100" height="11" />
-          <rect x="2" y="270" rx="5" ry="5" width="120" height="37" />
-          <rect x="0" y="196" rx="4" ry="4" width="100" height="12" />
-          <rect x="0" y="0" rx="0" ry="0" width="120" height="180" />
-          <rect x="131" y="142" rx="6" ry="6" width="139" height="36" />
-          <rect x="130" y="34" rx="4" ry="4" width="61" height="10" />
-          <rect x="130" y="4" rx="4" ry="4" width="100" height="11" />
-        </ContentLoader>
-      </Col>
-    </Row>
+    <Row xs={1}>
+    <Col>
+      <ContentLoader
+      className="w-100 d-none d-md-block border-1 border-secondary border-bottom"
+        speed={2}
+        width={1296}
+        height={115}
+        viewBox="0 0 1296 115"
+        backgroundColor="#e8e8e8"
+        foregroundColor="#f5f4f4"
+      >   
+        <circle cx="15" cy="60" r="10" />
+        <rect x="40" y="16" rx="4" ry="4" width="75" height="90" />
+        <rect x="130" y="52" rx="4" ry="4" width="160" height="20" />
+        <rect x="590" y="52" rx="4" ry="4" width="120" height="20" />
+        <rect x="820" y="52" rx="4" ry="4" width="120" height="20" />
+        <rect x="1010" y="52" rx="4" ry="4" width="160" height="20" />
+        
+      </ContentLoader>
+      <ContentLoader
+      className="w-100 d-block d-md-none border-1 border-secondary border-bottom"
+        speed={2}
+        width={1296}
+        height={90}
+        viewBox="0 0 1296 115"
+        backgroundColor="#e8e8e8"
+        foregroundColor="#f5f4f4"
+      >   
+        <circle cx="20" cy="60" r="15" />
+        <rect x="90" y="52" rx="4" ry="4" width="160" height="30" />
+        <rect x="610" y="52" rx="4" ry="4" width="120" height="30" />
+        <rect x="1010" y="52" rx="4" ry="4" width="140" height="30" />
+        
+      </ContentLoader>
+    </Col>
+    <Col>
+      <ContentLoader
+      className="w-100 d-none d-md-block border-1 border-secondary border-bottom"
+        speed={2}
+        width={1296}
+        height={115}
+        viewBox="0 0 1296 115"
+        backgroundColor="#e8e8e8"
+        foregroundColor="#f5f4f4"
+      >   
+        <circle cx="15" cy="60" r="10" />
+        <rect x="40" y="16" rx="4" ry="4" width="75" height="90" />
+        <rect x="130" y="52" rx="4" ry="4" width="160" height="20" />
+        <rect x="590" y="52" rx="4" ry="4" width="120" height="20" />
+        <rect x="820" y="52" rx="4" ry="4" width="120" height="20" />
+        <rect x="1010" y="52" rx="4" ry="4" width="160" height="20" />
+        
+      </ContentLoader>
+      <ContentLoader
+      className="w-100 d-block d-md-none border-1 border-secondary border-bottom"
+        speed={2}
+        width={1296}
+        height={90}
+        viewBox="0 0 1296 115"
+        backgroundColor="#e8e8e8"
+        foregroundColor="#f5f4f4"
+      >   
+        <circle cx="20" cy="60" r="15" />
+        <rect x="90" y="52" rx="4" ry="4" width="160" height="30" />
+        <rect x="610" y="52" rx="4" ry="4" width="120" height="30" />
+        <rect x="1010" y="52" rx="4" ry="4" width="140" height="30" />
+        
+      </ContentLoader>
+    </Col>
+    <Col>
+      <ContentLoader
+      className="w-100 d-none d-md-block border-1 border-secondary border-bottom"
+        speed={2}
+        width={1296}
+        height={115}
+        viewBox="0 0 1296 115"
+        backgroundColor="#e8e8e8"
+        foregroundColor="#f5f4f4"
+      >   
+        <circle cx="15" cy="60" r="10" />
+        <rect x="40" y="16" rx="4" ry="4" width="75" height="90" />
+        <rect x="130" y="52" rx="4" ry="4" width="160" height="20" />
+        <rect x="590" y="52" rx="4" ry="4" width="120" height="20" />
+        <rect x="820" y="52" rx="4" ry="4" width="120" height="20" />
+        <rect x="1010" y="52" rx="4" ry="4" width="160" height="20" />
+        
+      </ContentLoader>
+      <ContentLoader
+      className="w-100 d-block d-md-none border-1 border-secondary border-bottom"
+        speed={2}
+        width={1296}
+        height={90}
+        viewBox="0 0 1296 115"
+        backgroundColor="#e8e8e8"
+        foregroundColor="#f5f4f4"
+      >   
+        <circle cx="20" cy="60" r="15" />
+        <rect x="90" y="52" rx="4" ry="4" width="160" height="30" />
+        <rect x="610" y="52" rx="4" ry="4" width="120" height="30" />
+        <rect x="1010" y="52" rx="4" ry="4" width="140" height="30" />
+        
+      </ContentLoader>
+    </Col>
+    
+  </Row>
   );
 }

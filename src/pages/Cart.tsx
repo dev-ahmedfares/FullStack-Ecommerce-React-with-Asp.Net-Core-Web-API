@@ -7,7 +7,8 @@ import { LottieHandler } from "@components/feedback";
 import Loading from "@components/feedback/Loading";
 import Heading from "@components/shared/Heading/Heading";
 import useCart from "@hooks/useCart";
-import { Container } from "react-bootstrap";
+import {  Container } from "react-bootstrap";
+
 
 export default function Cart() {
   const {
@@ -27,9 +28,8 @@ export default function Cart() {
         url="https://capturly.com/blog/wp-content/uploads/2018/01/eCommerce-website-search-customer-experience.jpg"
       />
       <Container fluid={"md"}>
-        <Heading>Shopping Cart</Heading>
+        <Heading style="mb-4 mt-5 my-lg-5">Shopping Cart</Heading>
 
-        
           {placeOrderStatus === "succeeded" ? (
             <LottieHandler
               type="success"

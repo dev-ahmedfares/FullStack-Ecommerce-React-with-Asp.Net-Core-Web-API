@@ -29,6 +29,7 @@ import SelectedBtns from "../SelectedBtns/SelectedBtns";
 import CategoryModal from "../CategoryModal/CategoryModal";
 import { ArrayOfColors, ArrayOfMaterials } from "@data/data";
 import toast from "react-hot-toast";
+import Loading from "@components/feedback/Loading";
 
 
 const { tableParent, productImg, btn, form, pagination, select } = styles;
@@ -54,8 +55,7 @@ export default function TableList() {
 
   const {
     loading: loadingForProduct,
-    // staticElement
-    // error: productError,
+    error: productError,
     productsFullInfo,
     isTheLastPage,
   } = useGetProducts({
@@ -182,8 +182,7 @@ export default function TableList() {
    
     const formData = new FormData();
 
-    // if (data.primaryImage && typeof data.primaryImage !== "string") {
-    // }
+    
     formData.append("Images", data.primaryImage[0]);
 
     if (data.Image_2) formData.append("Images", data.Image_2[0]);
@@ -243,6 +242,9 @@ export default function TableList() {
             </tr>
           </thead>
           <tbody>
+            <Loading status={loadingForProduct} type="dashboardSkeleton" error={productError}>
+              
+           
             {allProducts.map((product: TProduct) => (
               <tr key={product.productId}>
                 <td>
@@ -304,6 +306,7 @@ export default function TableList() {
                 </td>
               </tr>
             ))}
+             </Loading>
           </tbody>
         </Table>
         {isTheLastPage && currentPage === 1 ? null : (
