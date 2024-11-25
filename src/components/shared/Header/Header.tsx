@@ -158,14 +158,15 @@ export default function Header() {
                       <Nav.Link as={NavLink} to="profile/orders">
                         ORDERS
                       </Nav.Link>
-                    </>
-                  )}
-
-                  {roles.includes("Admin") && (
+                      {roles.includes("Admin") && (
                     <Nav.Link as={NavLink} to="dashboard">
                       DASHBOARD
                     </Nav.Link>
                   )}
+                    </>
+                  )}
+
+                  
 
                   {accessToken ? (
                     <Nav.Link
