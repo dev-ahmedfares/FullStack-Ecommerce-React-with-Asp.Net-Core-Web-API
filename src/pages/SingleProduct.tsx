@@ -83,8 +83,8 @@ export default function SingleProduct() {
      // Scroll to top when component is mounted
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
-  
+  }, [productId]);
+
   return (
           <Loading status={loadingSingleProduct} error={error} type="singleProduct">
             <ProductMainDetails
