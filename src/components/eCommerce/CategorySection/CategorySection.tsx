@@ -27,7 +27,7 @@ export default function CategorySection() {
   const {
     allProducts,
     categories,
-    // staticElement
+    // willImplemented
     // loadingCategories,
     // errorCategories,
     errorProduct,

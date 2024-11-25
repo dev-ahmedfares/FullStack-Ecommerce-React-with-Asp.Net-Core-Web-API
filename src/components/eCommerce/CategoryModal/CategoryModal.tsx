@@ -36,7 +36,7 @@ export default function CategoryModal({
   showCategoryModal,
   setShowCategoryModal,
   categories,
-  // staticElement
+  // willImplemented
   // error,
   loading,
   loadingAddingProduct,

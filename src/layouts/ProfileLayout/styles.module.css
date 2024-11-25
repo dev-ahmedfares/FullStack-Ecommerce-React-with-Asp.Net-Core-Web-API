@@ -15,7 +15,20 @@
     }
 }
 
+
+
 .col a {
-    border-radius: 0 !important;
+    border-radius: 4px !important;
+    border-color: var(--secondary-light);
+    border-top-width: 1px !important;
+    transition: all 0.2s ease;
+    margin: 5px 0 !important;
 }
 
+
+.col a:hover,
+.col a:focus {
+    background-color: var(--primary);
+    color: white;
+    
+}

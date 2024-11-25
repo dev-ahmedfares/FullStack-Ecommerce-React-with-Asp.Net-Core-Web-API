@@ -6,7 +6,7 @@ export default function DashboardSkeleton() {
     const dashboardSkeleton = Array(6)
     .fill(0)
     .map((_, idx) => (
-        <Col className='p-0' key={idx}>
+        <Col as={"td"} className='p-0' key={idx}>
         <ContentLoader
         className="w-100  border-1 border-secondary border-bottom"
           speed={2}
@@ -32,7 +32,7 @@ export default function DashboardSkeleton() {
       </Col>
       
     ));
-  return <Row xs={1}>{dashboardSkeleton}</Row>;
+  return <Row as={"tr"} className='d-flex flex-column '>{dashboardSkeleton}</Row>;
   
 
 }

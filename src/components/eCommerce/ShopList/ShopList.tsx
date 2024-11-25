@@ -42,7 +42,7 @@ export default function ShopList() {
   const {
     allProducts,
     categories,
-    // staticElement
+    // willImplemented
     // loadingCategories,
     // errorCategories,
     errorProduct,
@@ -92,7 +92,7 @@ export default function ShopList() {
 
 
   return (
-    // staticElement Loading here
+    // willImplemented Loading here
     
     <div className={parent}>
       <div className={sidebar}>
@@ -337,7 +337,7 @@ export default function ShopList() {
             <option value={"highToLow"}>Sort by Price: High to Low</option>
           </Form.Select>
         </div>
-        {/* staticElement */}
+        
         <Loading status={loadingProduct} error={errorProduct} type="product">
           <div className="py-4">
             <Row>

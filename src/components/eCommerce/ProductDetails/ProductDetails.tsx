@@ -28,12 +28,12 @@ export default function ProductDetails({
   reviewsCount,
 }: TProduct & { averageRating: number; reviewsCount: number }) {
   const { items } = useAppSelector((state) => state.cart);
-  // staticElement
+  
   const [selectedQuantity, setSelectedQuantity] = useState(
     items[productId] ?? 1
   );
 
-  // staticElement here problem of quantity not found in product object must came form API
+  
   const [isBtnClicked, setIsBtnClicked] = useState(false);
 
   const dispatch = useAppDispatch();
@@ -85,7 +85,7 @@ export default function ProductDetails({
         <p>${price && price.toFixed(2)}</p>
       </div>
       <div className={starsHolder}>
-        {/* staticElement fix rating and add averageRating*/}
+        
         <div>
           <StaticStarsRating rating={averageRating} size={17} />
           {reviewsCount ? <span>( {reviewsCount} reviews)</span> : null}

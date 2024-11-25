@@ -1,0 +1,17 @@
+.table {
+    border: 1px solid var(--secondary-light);
+    border-radius: 6px !important;
+    overflow: hidden;
+    padding:  5px 15px !important;
+}
+.table table {
+    margin: 0;
+    
+}
+
+.table tr:not(:last-child) ,
+.table thead {
+    
+  border-bottom: 1px solid var(--secondary-light);
+}
+

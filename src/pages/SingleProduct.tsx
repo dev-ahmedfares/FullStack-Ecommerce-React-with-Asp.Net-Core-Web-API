@@ -31,10 +31,7 @@ export default function SingleProduct() {
   const likedProducts = useAppSelector((state) => state.wishlist.productsId);
 
   const {
-    accessToken,
-    // staticElement
-    // loading: userLoading,
-    // user,
+    accessToken
   } = useAppSelector((state) => state.auth);
 
   useEffect(() => {

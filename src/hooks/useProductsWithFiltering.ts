@@ -69,7 +69,7 @@ const useProductsWithFiltering = (pageCount: number = 8) => {
     isTheLastPage,
   } = useGetProducts(query);
 
-  // staticElement
+  
   const {
     allCategories,
     loading: loadingCategories,
