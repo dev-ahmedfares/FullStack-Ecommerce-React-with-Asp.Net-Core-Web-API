@@ -132,7 +132,9 @@ const router = createBrowserRouter([
         path: "dashboard",
         element: (
           <PageSuspenseFallback>
-            <Dashboard />
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
           </PageSuspenseFallback>
         ),
       },
