@@ -6,10 +6,10 @@ import {
   Offcanvas,
 } from "react-bootstrap";
 import styles from "./styles.module.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import HeadersCounter from "./HeaderLeftBar/HeaderLeftBar";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { useEffect, useState } from "react";
+import { useEffect,  useState } from "react";
 import { actGetWishlist, wishlistCleanUp } from "@store/wishlist/wishlistSlice";
 import { authLogout } from "@store/auth/authSlice";
 import User from "@assets/svg/user.svg?react";
@@ -23,6 +23,15 @@ export default function Header() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const location = useLocation()
+
+
+  useEffect(()=> {
+    handleClose()
+  },[location.pathname])
+
+
+  
 
   useEffect(() => {
     if (!accessToken) return;
@@ -123,8 +132,8 @@ export default function Header() {
               }}
             />
             <Offcanvas.Body>
-              <ul className="canvas mt-3">
-                <Nav>
+              <ul className="canvas mt-3" >
+                <Nav  >
                   <Nav.Link as={NavLink} to="/">
                     HOME
                   </Nav.Link>
