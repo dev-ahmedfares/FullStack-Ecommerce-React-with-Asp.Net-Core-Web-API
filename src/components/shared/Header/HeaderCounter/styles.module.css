@@ -1,6 +1,6 @@
 .basketContainer {
+  cursor: pointer;
     position: relative;
-    cursor: pointer;
   }
   
   .basketQuantity {
