@@ -11,6 +11,7 @@ import Input from "@components/forms/Input/Input";
 import { Link, Navigate } from "react-router-dom";
 import useRegister from "@hooks/useRegister";
 import { LottieHandler } from "@components/feedback";
+import { useEffect } from "react";
 
 export default function Register() {
   const {
@@ -21,6 +22,11 @@ export default function Register() {
     loading,
     errors,
   } = useRegister();
+
+  // Scroll to top when component is mounted
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (accessToken) {
     return <Navigate to="/" />;

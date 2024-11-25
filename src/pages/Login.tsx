@@ -2,6 +2,7 @@ import { LottieHandler } from "@components/feedback";
 import Input from "@components/forms/Input/Input";
 import Heading from "@components/shared/Heading/Heading";
 import useLogin from "@hooks/useLogin";
+import { useEffect } from "react";
 import { Alert, Button, Col, Container, Form, Row, Spinner } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
 
@@ -15,10 +16,18 @@ export default function Login() {
     searchParams,
     onSubmit,
   } = useLogin();
+  
+// Scroll to top when component is mounted
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (accessToken) {
     return <Navigate to="/" />;
   }
+
+   
+   
 
   return (
     <Container fluid={"md"}>
