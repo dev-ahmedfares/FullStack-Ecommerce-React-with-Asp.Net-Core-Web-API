@@ -78,7 +78,7 @@ export default function Orders() {
                 <tr key={item.id}>
                   <td>#{item.id}</td>
                   <td>
-                    {item.items.length} item(s) /{" "}
+                    {item.items[0].quantity} item(s) /{" "}
                     <span
                       onClick={() => viewDetailsHandler(item.id)}
                       className="text-decoration-underline"
