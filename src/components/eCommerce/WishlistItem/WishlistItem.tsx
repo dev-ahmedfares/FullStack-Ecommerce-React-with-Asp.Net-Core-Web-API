@@ -25,7 +25,7 @@ const WishlistItem = memo(
     const [isToggleLike, setIsToggleLike] = useState(false);
     const [isAddedToCart,setIsAddedToCart] = useState(false)
     const {items} = useAppSelector(state=> state.cart)
-    console.log("Render")
+    console.log("Render From WishlistItem")
     useEffect(() => {
       if (!isBtnClicked) return;
       const debounce = setTimeout(() => {

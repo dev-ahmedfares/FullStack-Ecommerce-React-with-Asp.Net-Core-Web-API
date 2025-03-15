@@ -97,11 +97,11 @@ export default function Header() {
                     <NavDropdown.Item as={NavLink} to="profile/orders">
                       MY ORDERS
                     </NavDropdown.Item>
-                    {roles.includes("Admin") && (
+                     {roles?.includes("Admin") && (
                       <NavDropdown.Item as={NavLink} to="dashboard">
                         DASHBOARD
                       </NavDropdown.Item>
-                    )}
+                    )} 
 
                     <NavDropdown.Divider />
                     <NavDropdown.Item
@@ -158,7 +158,7 @@ export default function Header() {
                       <Nav.Link as={NavLink} to="profile/orders">
                         ORDERS
                       </Nav.Link>
-                      {roles.includes("Admin") && (
+                      {roles?.includes("Admin") && (
                     <Nav.Link as={NavLink} to="dashboard">
                       DASHBOARD
                     </Nav.Link>

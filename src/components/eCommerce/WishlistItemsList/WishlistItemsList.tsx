@@ -11,6 +11,6 @@ export default function WishlistItemsList({
   const renderWishlistItems = products.map((product) => (
     <WishlistItem key={product.productId} {...product}   />
   ));
-
+  console.log("Render From WishlistItemsList")
   return <>{renderWishlistItems}</>;
 }
