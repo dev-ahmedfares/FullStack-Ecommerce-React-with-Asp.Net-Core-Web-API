@@ -5,7 +5,7 @@
 <h4>that provides a seamless shopping experience for users. This project includes various features such as product browsing, filtering, wishlist, cart management, reviews, orders, and admin functionalities and more...
 </h4>
 </div>
-<h2></h2> -->
+<h2></h2> 
 <center><a href="https://fullstack-ecommerce-react-dotnet.netlify.app/"><img src="/public/Background.png"/></a></center>
 
 ## As a frontend developer
